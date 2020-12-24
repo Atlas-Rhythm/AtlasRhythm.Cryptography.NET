@@ -46,7 +46,7 @@ namespace Chacha20Poly1305
             }
 
             var stateBytes = new byte[StateBytesLength];
-            for (var i = 0; i < 16; i++)
+            for (var i = 0; i < StateLength; i++)
             {
                 var bytes = LittleEndianBitConverter.GetBytes(state[i]);
                 Array.Copy(bytes, 0, stateBytes, i * sizeof(uint), sizeof(uint));

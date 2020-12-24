@@ -2,6 +2,11 @@
 
 namespace Chacha20Poly1305
 {
+    internal static class Extensions
+    {
+        public static uint LeftRoll(this uint lhs, int rhs) => (lhs << rhs) | (lhs >> (sizeof(uint) * 8 - rhs));
+    }
+
     internal static class LittleEndianBitConverter
     {
         public static uint ToUInt32(byte[] value, int startIndex)
@@ -32,7 +37,7 @@ namespace Chacha20Poly1305
                     (byte)(value & 0x00_00_00_FF),
                     (byte)((value & 0x00_00_FF_00) >> 8),
                     (byte)((value & 0x00_FF_00_00) >> 16),
-                    (byte)((value & 0xFF_00_00_00) >> 23)
+                    (byte)((value & 0xFF_00_00_00) >> 24)
                 };
             }
         }
