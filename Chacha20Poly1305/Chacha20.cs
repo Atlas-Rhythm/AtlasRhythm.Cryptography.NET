@@ -23,7 +23,7 @@ namespace Chacha20Poly1305
             }
         }
 
-        public static byte[] Block(byte[] key, uint counter, byte[] nonce)
+        private static byte[] Block(byte[] key, uint counter, byte[] nonce)
         {
             var state = new uint[]
             {
