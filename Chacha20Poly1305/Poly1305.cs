@@ -12,9 +12,6 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-using System.Runtime.CompilerServices;
-using System.Runtime.InteropServices;
-
 namespace Chacha20Poly1305
 {
     internal static unsafe class Poly1305
@@ -23,21 +20,14 @@ namespace Chacha20Poly1305
         public const int TagSize = 128 / 8;
         public const int BlockSize = 16;
 
-        [StructLayout(LayoutKind.Explicit)]
         private struct State
         {
-            [FieldOffset(0)]
             public fixed uint r[5];
-            [FieldOffset(5 * sizeof(uint))]
             public fixed uint h[5];
-            [FieldOffset(10 * sizeof(uint))]
             public fixed uint pad[4];
-            [FieldOffset(14 * sizeof(uint))]
             public int leftover;
-            [FieldOffset(14 * sizeof(uint) + sizeof(int))]
             public fixed byte buffer[BlockSize];
-            [FieldOffset(14 * sizeof(uint) + sizeof(int) + BlockSize)]
-            public byte final;
+            public bool final;
         }
 
         public static void Mac(byte* key, byte* data, int size, byte* mac)
@@ -110,7 +100,7 @@ namespace Chacha20Poly1305
 
         private static void Blocks(State* state, byte* data, int size)
         {
-            uint hibit = state->final != 0 ? 0 : (1u << 24);
+            uint hibit = state->final ? 0 : (1u << 24);
             uint r0, r1, r2, r3, r4;
             uint s1, s2, s3, s4;
             uint h0, h1, h2, h3, h4;
@@ -167,7 +157,6 @@ namespace Chacha20Poly1305
             state->h[4] = h4;
         }
 
-        [MethodImpl(MethodImplOptions.NoInlining)]
         private static void Finish(State* state, byte* mac)
         {
             uint h0, h1, h2, h3, h4, c;
@@ -180,7 +169,7 @@ namespace Chacha20Poly1305
                 int i = state->leftover;
                 state->buffer[i++] = 1;
                 for (; i < BlockSize; ++i) state->buffer[i] = 0;
-                state->final = 1;
+                state->final = true;
                 Blocks(state, state->buffer, BlockSize);
             }
 
