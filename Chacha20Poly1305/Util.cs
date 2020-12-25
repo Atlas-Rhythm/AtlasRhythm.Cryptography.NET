@@ -18,64 +18,36 @@ namespace Chacha20Poly1305
 {
     internal static class Extensions
     {
-        public static uint LeftRoll(this uint lhs, int rhs) => (lhs << rhs) | (lhs >> (sizeof(uint) * 8 - rhs));
+        public static uint LeftRoll(this uint lhs, int rhs) =>
+            (lhs << rhs) | (lhs >> (sizeof(uint) * 8 - rhs));
     }
 
-    internal static class LittleEndianBitConverter
+    internal static unsafe class Memory
     {
-        public static uint ToUInt32(byte[] value, int startIndex)
+        public static uint U8ToU32(byte* u8) =>
+                  u8[0]       &
+            (uint)u8[1] <<  8 &
+            (uint)u8[2] << 16 &
+            (uint)u8[3] << 24 ;
+
+        public static void U32ToU8(uint u32, byte* u8)
         {
-            if (BitConverter.IsLittleEndian)
-            {
-                return BitConverter.ToUInt32(value, startIndex);
-            }
-            else
-            {
-                return value[startIndex]
-                    | ((uint)value[startIndex + 1] << 8)
-                    | ((uint)value[startIndex + 2] << 16)
-                    | ((uint)value[startIndex + 3] << 24);
-            }
+            u8[0] = (byte)( u32        & 0xff);
+            u8[1] = (byte)((u32 >>  8) & 0xff);
+            u8[2] = (byte)((u32 >> 16) & 0xff);
+            u8[3] = (byte)((u32 >> 24) & 0xff);
         }
 
-        public static byte[] GetBytes(uint value)
+        public static void U64ToU8(ulong u64, byte* u8)
         {
-            if (BitConverter.IsLittleEndian)
-            {
-                return BitConverter.GetBytes(value);
-            }
-            else
-            {
-                return new byte[]
-                {
-                    (byte)(value & 0x00_00_00_FF),
-                    (byte)((value & 0x00_00_FF_00) >> 8),
-                    (byte)((value & 0x00_FF_00_00) >> 16),
-                    (byte)((value & 0xFF_00_00_00) >> 24)
-                };
-            }
-        }
-
-        public static byte[] GetBytes(ulong value)
-        {
-            if (BitConverter.IsLittleEndian)
-            {
-                return BitConverter.GetBytes(value);
-            }
-            else
-            {
-                return new byte[]
-                {
-                    (byte)(value & 0x00_00_00_00_00_00_00_FF),
-                    (byte)((value & 0x00_00_00_00_00_00_FF_00) >> 8),
-                    (byte)((value & 0x00_00_00_00_00_FF_00_00) >> 16),
-                    (byte)((value & 0x00_00_00_00_FF_00_00_00) >> 24),
-                    (byte)((value & 0x00_00_00_FF_00_00_00_00) >> 32),
-                    (byte)((value & 0x00_00_FF_00_00_00_00_00) >> 40),
-                    (byte)((value & 0x00_FF_00_00_00_00_00_00) >> 48),
-                    (byte)((value & 0xFF_00_00_00_00_00_00_00) >> 56)
-                };
-            }
+            u8[0] = (byte)( u64        & 0xff);
+            u8[1] = (byte)((u64 >>  8) & 0xff);
+            u8[2] = (byte)((u64 >> 16) & 0xff);
+            u8[3] = (byte)((u64 >> 24) & 0xff);
+            u8[4] = (byte)((u64 >> 32) & 0xff);
+            u8[5] = (byte)((u64 >> 40) & 0xff);
+            u8[6] = (byte)((u64 >> 48) & 0xff);
+            u8[7] = (byte)((u64 >> 56) & 0xff);
         }
     }
 }
