@@ -64,9 +64,9 @@ namespace Chacha20Poly1305
         /// <param name="tag">The byte array to receive the generated authentication tag.</param>
         /// <param name="associatedData">Extra data associated with this message, which must also be provided during decryption.</param>
         /// <exception cref="ArgumentNullException">The `nonce`, `plaintext`, `cyphertext`, or `tag` parameter is `null`.</exception>
-        /// <exception cref="ArgumentException">The `plaintext` parameter and the `ciphertext` do not have the same length.</exception>
         /// <exception cref="ArgumentException">The `nonce` parameter length is not permitted by <see cref="NonceByteSizes"/>.</exception>
         /// <exception cref="ArgumentException">The `tag` parameter length is not permitted by <see cref="TagByteSizes"/>.</exception>
+        /// <exception cref="ArgumentException">The `plaintext` parameter and the `ciphertext` do not have the same length.</exception>
         public void Encrypt(byte[] nonce, byte[] plaintext, byte[] ciphertext, byte[] tag, byte[] associatedData = default)
         {
             CheckParameters(nonce, plaintext, ciphertext, tag);
@@ -90,9 +90,9 @@ namespace Chacha20Poly1305
         /// <param name="plaintext">The byte array to receive the decrypted contents.</param>
         /// <param name="associatedData">Extra data associated with this message, which must match the value provided during encryption.</param>
         /// <exception cref="ArgumentNullException">The `nonce`, `cyphertext`, `plaintext`, or `tag` parameter is `null`.</exception>
-        /// <exception cref="ArgumentException">The `ciphertext` parameter and the `plaintext` do not have the same length.</exception>
         /// <exception cref="ArgumentException">The `nonce` parameter length is not permitted by <see cref="NonceByteSizes"/>.</exception>
         /// <exception cref="ArgumentException">The `tag` parameter length is not permitted by <see cref="TagByteSizes"/>.</exception>
+        /// <exception cref="ArgumentException">The `ciphertext` parameter and the `plaintext` do not have the same length.</exception>
         /// <exception cref="CryptographicException">The tag value could not be verified.</exception>
         public void Decrypt(byte[] nonce, byte[] ciphertext, byte[] tag, byte[] plaintext, byte[] associatedData = default)
         {
@@ -219,7 +219,7 @@ namespace Chacha20Poly1305
             return valid;
         }
 
-        public static unsafe void Tag(
+        private static unsafe void Tag(
             byte* ciphertext,
             int ciphertextSize,
             byte* associatedData,
@@ -269,13 +269,13 @@ namespace Chacha20Poly1305
             if (ciphertext is null) throw new ArgumentNullException(nameof(ciphertext));
             if (tag is null) throw new ArgumentNullException(nameof(tag));
 
-            if (plaintext.Length != ciphertext.Length)
-                throw new ArgumentException("Plaintext and ciphertext must have the same length.");
-
             if (nonce.Length != NonceSize)
                 throw new ArgumentException("The specified nonce is not a valid size for this algorithm.", nameof(nonce));
             if (tag.Length != TagSize)
                 throw new ArgumentException("The specified tag is not a valid size for this algorithm.", nameof(tag));
+
+            if (plaintext.Length != ciphertext.Length)
+                throw new ArgumentException("Plaintext and ciphertext must have the same length.");
         }
 
         public void Dispose()
