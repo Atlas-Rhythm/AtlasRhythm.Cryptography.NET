@@ -13,7 +13,6 @@
 // limitations under the License.
 
 using System;
-using System.Collections;
 using System.Security.Cryptography;
 
 namespace Chacha20Poly1305
