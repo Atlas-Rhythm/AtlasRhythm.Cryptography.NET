@@ -23,9 +23,9 @@ namespace Chacha20Poly1305
     internal static unsafe class Memory
     {
         public static uint U8ToU32(byte* u8) =>
-                  u8[0]       &
-            (uint)u8[1] <<  8 &
-            (uint)u8[2] << 16 &
+                  u8[0]       |
+            (uint)u8[1] <<  8 |
+            (uint)u8[2] << 16 |
             (uint)u8[3] << 24 ;
 
         public static void U32ToU8(uint u32, byte* u8)

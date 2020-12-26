@@ -74,7 +74,7 @@ namespace Chacha20Poly1305
                 int want = size & ~(BlockSize - 1);
                 Blocks(state, data, want);
                 data += want;
-                data -= want;
+                size -= want;
             }
 
             if (size != 0)
@@ -86,10 +86,10 @@ namespace Chacha20Poly1305
 
         private static void Init(State* state, byte* key)
         {
-            state->r[0] = Memory.U8ToU32(key) & 0x3ffffff;
-            state->r[1] = (Memory.U8ToU32(key + 3) >> 2) & 0x3ffff03;
-            state->r[2] = (Memory.U8ToU32(key + 6) >> 4) & 0x3ffc0ff;
-            state->r[3] = (Memory.U8ToU32(key + 9) >> 6) & 0x3f03fff;
+            state->r[0] =  Memory.U8ToU32(key     )       & 0x3ffffff;
+            state->r[1] = (Memory.U8ToU32(key +  3) >> 2) & 0x3ffff03;
+            state->r[2] = (Memory.U8ToU32(key +  6) >> 4) & 0x3ffc0ff;
+            state->r[3] = (Memory.U8ToU32(key +  9) >> 6) & 0x3f03fff;
             state->r[4] = (Memory.U8ToU32(key + 12) >> 8) & 0x00fffff;
 
             state->pad[0] = Memory.U8ToU32(key + 16);
@@ -179,11 +179,11 @@ namespace Chacha20Poly1305
             h3 = state->h[3];
             h4 = state->h[4];
 
-                         c = h1 >> 26; h1 = h1 & 0x3ffffff;
-            h2 += c;     c = h2 >> 26; h2 = h2 & 0x3ffffff;
-            h3 += c;     c = h3 >> 26; h3 = h3 & 0x3ffffff;
-            h4 += c;     c = h4 >> 26; h4 = h4 & 0x3ffffff;
-            h0 += c * 5; c = h0 >> 26; h0 = h0 & 0x3ffffff;
+                         c = h1 >> 26; h1 &= 0x3ffffff;
+            h2 += c;     c = h2 >> 26; h2 &= 0x3ffffff;
+            h3 += c;     c = h3 >> 26; h3 &= 0x3ffffff;
+            h4 += c;     c = h4 >> 26; h4 &= 0x3ffffff;
+            h0 += c * 5; c = h0 >> 26; h0 &= 0x3ffffff;
             h1 += c;
 
             g0 = h0 + 5; c = g0 >> 26; g0 &= 0x3ffffff;

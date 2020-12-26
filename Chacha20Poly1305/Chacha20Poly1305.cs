@@ -22,9 +22,18 @@ namespace Chacha20Poly1305
     /// </summary>
     public sealed class Chacha20Poly1305 : IDisposable
     {
-        private const int KeySize = Chacha20.KeySize;
-        private const int NonceSize = Chacha20.NonceSize;
-        private const int TagSize = Poly1305.TagSize;
+        /// <summary>
+        /// Key size, in bytes, supported by this instance.
+        /// </summary>
+        public const int KeySize = Chacha20.KeySize;
+        /// <summary>
+        /// Nonce size, in bytes, supported by this instance.
+        /// </summary>
+        public const int NonceSize = Chacha20.NonceSize;
+        /// <summary>
+        /// Tag size, in bytes, supported by this instance.
+        /// </summary>
+        public const int TagSize = Poly1305.TagSize;
 
         /// <summary>
         /// Gets the key sizes, in bytes, supported by this instance.
@@ -197,7 +206,7 @@ namespace Chacha20Poly1305
             byte* computedTag = stackalloc byte[Poly1305.TagSize];
 
             Chacha20.State(chacha20State, key, 0, nonce);
-            Tag(ciphertext, size, associatedData, associatedDataSize, chacha20State, chacha20X, chacha20Bytes, tag);
+            Tag(ciphertext, size, associatedData, associatedDataSize, chacha20State, chacha20X, chacha20Bytes, computedTag);
             bool valid = Poly1305.Verify(tag, computedTag);
 
             if (valid)
@@ -229,13 +238,13 @@ namespace Chacha20Poly1305
             byte* tag)
         {
             int i;
-
             byte* poly1305key = stackalloc byte[Poly1305.KeySize];
+
             Chacha20.Block(chacha20State, chacha20X, chacha20Bytes);
             for (i = 0; i < Poly1305.KeySize; ++i) poly1305key[i] = chacha20Bytes[i];
 
-            int padding1 = associatedDataSize % 16;
-            int padding2 = ciphertextSize % 16;
+            int padding1 = Poly1305.BlockSize - (associatedDataSize % Poly1305.BlockSize);
+            int padding2 = Poly1305.BlockSize - (ciphertextSize % Poly1305.BlockSize);
 
             int ciphertextStart = associatedDataSize + padding1;
             int additionalDataSizeStart = ciphertextStart + ciphertextSize + padding2;
