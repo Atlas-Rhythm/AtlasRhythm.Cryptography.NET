@@ -4,6 +4,8 @@ Pure C#, performant and [RFC 8439](https://tools.ietf.org/html/rfc8439) complian
 
 > No security audits of this code have ever been performed. USE AT YOUR OWN RISK.
 
+[![Tests Status](https://img.shields.io/github/workflow/status/Atlas-Rhythm/Chacha20Poly1305.NET/Tests?label=tests&style=for-the-badge)](https://github.com/Atlas-Rhythm/Chacha20Poly1305.NET/actions?query=workflow%3ATests)
+
 ChaCha20 is stream cipher which is faster than AES in software-only implementations. Poly1305 is a fast message authentication code (MAC). They can be combined to achieve Authenticated Encryption with Associated Data (AEAD) as a fast software-only alternative to AES in Galois Counter Mode (GCM).
 
 This library aims to be a portable, fast and correct implementation which can easily be integrated into any .NET project as an alternative to AES-GCM. It supports .NET Standard 1.3 and up and .NET Framework 3.5 and up. The public API tries to replicate that of .NET Standard 2.1's [AesGcm](https://docs.microsoft.com/en-us/dotnet/api/system.security.cryptography.aesgcm?view=netstandard-2.1). The ChaCha20 implementation is based on the reference implementation by Daniel J. Bernstein. The Poly1305 implementation is based on the 32BIT version of [poly1305-donna](https://github.com/floodyberry/poly1305-donna). Both encryption and decryption perform a single allocation. Sensitive information is zeroed from memory before freeing resources.

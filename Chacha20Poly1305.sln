@@ -9,13 +9,19 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Misc", "Misc", "{78692B44-0
 	ProjectSection(SolutionItems) = preProject
 		.gitignore = .gitignore
 		LICENSE = LICENSE
+		README.md = README.md
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Chacha20Poly1305.Tests", "Chacha20Poly1305.Tests\Chacha20Poly1305.Tests.csproj", "{02B5524A-C954-46FA-B333-99EDB418D42A}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Chacha20Poly1305.Benchmarks", "Chacha20Poly1305.Benchmarks\Chacha20Poly1305.Benchmarks.csproj", "{7669A326-C477-4F8D-BBE4-A8D1E423D69B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Chacha20Poly1305.AesGcmBenchmarks", "Chacha20Poly1305.Benchmarks.AesGcm\Chacha20Poly1305.AesGcmBenchmarks.csproj", "{4D826915-2629-4FBD-A343-96A62E9B05F6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Chacha20Poly1305.AesGcmBenchmarks", "Chacha20Poly1305.Benchmarks.AesGcm\Chacha20Poly1305.AesGcmBenchmarks.csproj", "{4D826915-2629-4FBD-A343-96A62E9B05F6}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "CI", "CI", "{CFBAD6A6-28A5-4511-86CD-8865317956EB}"
+	ProjectSection(SolutionItems) = preProject
+		.github\workflows\tests.yml = .github\workflows\tests.yml
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
