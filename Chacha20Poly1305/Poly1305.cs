@@ -12,6 +12,8 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+using System.Runtime.CompilerServices;
+
 namespace AtlasRhythm.Cryptography
 {
     internal static unsafe class Poly1305
@@ -90,6 +92,7 @@ namespace AtlasRhythm.Cryptography
             state->pad[3] = Memory.U8ToU32(key + 28);
         }
 
+        [MethodImpl(MethodImplOptions.NoInlining)]
         public static void Finish(State* state, byte* mac)
         {
             uint h0, h1, h2, h3, h4, c;
@@ -169,6 +172,10 @@ namespace AtlasRhythm.Cryptography
             state->pad[3] = 0;
         }
 
+
+#if NET5_0
+        [MethodImpl(MethodImplOptions.AggressiveOptimization)]
+#endif
         private static void Blocks(State* state, byte* data, int size)
         {
             uint hibit = state->final ? 0 : (1u << 24);

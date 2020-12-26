@@ -12,22 +12,33 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+using System.Runtime.CompilerServices;
+
 namespace AtlasRhythm.Cryptography
 {
     internal static class Extensions
     {
+#if !NET35
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+#endif
         public static uint LeftRoll(this uint lhs, int rhs) =>
             (lhs << rhs) | (lhs >> (sizeof(uint) * 8 - rhs));
     }
 
     internal static unsafe class Memory
     {
+#if !NET35
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+#endif
         public static uint U8ToU32(byte* u8) =>
                   u8[0]       |
             (uint)u8[1] <<  8 |
             (uint)u8[2] << 16 |
             (uint)u8[3] << 24 ;
 
+#if !NET35
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+#endif
         public static void U32ToU8(uint u32, byte* u8)
         {
             u8[0] = (byte)( u32        & 0xff);
@@ -36,6 +47,9 @@ namespace AtlasRhythm.Cryptography
             u8[3] = (byte)( u32 >> 24        );
         }
 
+#if !NET35
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+#endif
         public static void U64ToU8(ulong u64, byte* u8)
         {
             u8[0] = (byte)( u64        & 0xff);

@@ -12,6 +12,8 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+using System.Runtime.CompilerServices;
+
 namespace AtlasRhythm.Cryptography
 {
     internal static unsafe class Chacha20
@@ -68,6 +70,9 @@ namespace AtlasRhythm.Cryptography
             }
         }
 
+#if NET5_0
+        [MethodImpl(MethodImplOptions.AggressiveOptimization)]
+#endif
         public static void Block(uint* state, uint* x, byte* bytes)
         {
             int i;
@@ -77,6 +82,9 @@ namespace AtlasRhythm.Cryptography
             for (i = 0; i < StateSize; ++i) Memory.U32ToU8(x[i] + state[i], bytes + i * sizeof(uint));
         }
 
+#if !NET35
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+#endif
         private static void DoubleRound(uint* state)
         {
             QuarterRound(state, 0, 4,  8, 12);
@@ -89,6 +97,9 @@ namespace AtlasRhythm.Cryptography
             QuarterRound(state, 3, 4,  9, 14);
         }
 
+#if !NET35
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+#endif
         private static void QuarterRound(uint* state, int a, int b, int c, int d)
         {
             state[a] += state[b]; state[d] ^= state[a]; state[d] = state[d].LeftRoll(16);
