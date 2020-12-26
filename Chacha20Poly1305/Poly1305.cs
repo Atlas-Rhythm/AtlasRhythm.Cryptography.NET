@@ -214,7 +214,9 @@ namespace AtlasRhythm.Cryptography
                 d2 += c; c = (uint)(d2 >> 26); h2 = (uint)d2 & 0x3ffffff;
                 d3 += c; c = (uint)(d3 >> 26); h3 = (uint)d3 & 0x3ffffff;
                 d4 += c; c = (uint)(d4 >> 26); h4 = (uint)d4 & 0x3ffffff;
-                h0 += c * 5; c = h0 >> 26 ; h0 &= 0x3ffffff;
+                h0 += c * 5;
+                c = h0 >> 26;
+                h0 &= 0x3ffffff;
                 h1 += c;
 
                 data += BlockSize;

@@ -66,19 +66,9 @@ To run the tests, simply run `dotnet test` from the [Chacha20Poly1305.Tests](Cha
 
 ## Benchmarks
 
-### Versus AES-GCM
+The benchmarks compare performance against .NET's [AesGcm](https://docs.microsoft.com/en-us/dotnet/api/system.security.cryptography.aesgcm?view=netstandard-2.1) and NSec's (libsodium) [Chacha20Poly1305](https://nsec.rocks/docs/api/nsec.cryptography.aeadalgorithm#chacha20poly1305) on .NET 5.0 and CoreRT 5.0.
 
-These benchmarks compare performance against .NET's [AesGcm](https://docs.microsoft.com/en-us/dotnet/api/system.security.cryptography.aesgcm?view=netstandard-2.1) on .NET 5.0 and CoreRT 5.0.
-
-They can be run from the [Chacha20Poly1305.Benchmarks.AesGcm](Chacha20Poly1305.Benchmarks.AesGcm) directory by running `dotnet run -c Release`.
-
-It is expected that AES-GCM outperforms ChaCha20-Poly1305 on most desktop processors since it uses the AES-NI instruction set provided by those processors instead of a software implementation.
-
-### Across runtimes
-
-These benchmarks compare performance across .NET 5.0, CoreRT 5.0, .NET Framework 4.8 and Mono.
-
-They can be run from the [Chacha20Poly1305.Benchmarks](Chacha20Poly1305.Benchmarks) directory by running `dotnet run -c Release -f net461 --runtimes net5.0 net48 mono`.
+They can be run from the [Chacha20Poly1305.Benchmarks](Chacha20Poly1305.Benchmarks) directory by running `dotnet run -c Release`.
 
 ## License
 

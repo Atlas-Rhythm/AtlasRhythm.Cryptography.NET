@@ -21,6 +21,7 @@ namespace AtlasRhythm.Cryptography
 
         public const int StateSize = 16;
         public const int StateBytesSize = StateSize * sizeof(uint);
+        public const int Rounds = 20;
 
         public static void State(uint* state, byte* key, uint counter, byte* nonce)
         {
@@ -72,18 +73,7 @@ namespace AtlasRhythm.Cryptography
             int i;
 
             for (i = 0; i < StateSize; ++i) x[i] = state[i];
-
-            DoubleRound(x);
-            DoubleRound(x);
-            DoubleRound(x);
-            DoubleRound(x);
-            DoubleRound(x);
-            DoubleRound(x);
-            DoubleRound(x);
-            DoubleRound(x);
-            DoubleRound(x);
-            DoubleRound(x);
-
+            for (i = 0; i < Rounds; i += 2) DoubleRound(x);
             for (i = 0; i < StateSize; ++i) Memory.U32ToU8(x[i] + state[i], bytes + i * sizeof(uint));
         }
 
