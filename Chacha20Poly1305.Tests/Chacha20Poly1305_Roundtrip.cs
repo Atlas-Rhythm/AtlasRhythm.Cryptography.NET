@@ -14,8 +14,7 @@ namespace Chacha20Poly1305.Tests
             var plaintext = new byte[2112];
             var associatedData = TestData.AssociatedData;
 
-            var rng = new Random(2112);
-            rng.NextBytes(plaintext);
+            new Random(2112).NextBytes(plaintext);
 
             var ciphertext = new byte[plaintext.Length];
             var tag = new byte[Chacha20Poly1305.TagSize];
@@ -35,8 +34,7 @@ namespace Chacha20Poly1305.Tests
             var nonce = TestData.Nonce;
             var plaintext = new byte[2112];
 
-            var rng = new Random(2112);
-            rng.NextBytes(plaintext);
+            new Random(2112).NextBytes(plaintext);
 
             var ciphertext = new byte[plaintext.Length];
             var tag = new byte[Chacha20Poly1305.TagSize];
