@@ -15,7 +15,7 @@
 using System;
 using System.Security.Cryptography;
 
-namespace Chacha20Poly1305
+namespace AtlasRhythm.Cryptography
 {
     /// <summary>
     /// Represents a key to be used with ChaCha20 and Poly1305 for Authenticated Encryption with Associated Data.
@@ -132,29 +132,29 @@ namespace Chacha20Poly1305
             var tag = new byte[TagSize];
             Encrypt(nonce, plaintext, ciphertext, tag, associatedData);
 
-            var output = new byte[ciphertext.Length + TagSize];
-            Array.Copy(ciphertext, output, ciphertext.Length);
-            Array.Copy(tag, 0, output, ciphertext.Length, TagSize);
-            return output;
+            var ciphertextAndTag = new byte[ciphertext.Length + TagSize];
+            Array.Copy(ciphertext, ciphertextAndTag, ciphertext.Length);
+            Array.Copy(tag, 0, ciphertextAndTag, ciphertext.Length, TagSize);
+            return ciphertextAndTag;
         }
 
         /// <summary>
         /// Decrypts the ciphertext and returns the plaintext in a new buffer if the authentication tag can be validated.
         /// </summary>
         /// <param name="nonce">The nonce associated with this message, which must match the value provided during encryption.</param>
-        /// <param name="ciphertext">The byte array containing the concatenated ciphertext and authentication tag.</param>
+        /// <param name="ciphertextAndTag">The byte array containing the concatenated ciphertext and authentication tag.</param>
         /// <param name="associatedData">Extra data associated with this message, which must match the value provided during encryption.</param>
         /// <returns>The byte array containing the plaintext.</returns>
         /// <exception cref="ArgumentNullException">The `nonce` or `cyphertext` parameter is `null`.</exception>
         /// <exception cref="ArgumentException">The `nonce` parameter length is not permitted by <see cref="NonceByteSizes"/>.</exception>
-        public byte[] Decrypt(byte[] nonce, byte[] ciphertext, byte[] associatedData = default)
+        public byte[] Decrypt(byte[] nonce, byte[] ciphertextAndTag, byte[] associatedData = default)
         {
-            var actualCiphertext = new byte[ciphertext.Length - TagSize];
+            var ciphertext = new byte[ciphertextAndTag.Length - TagSize];
             var tag = new byte[TagSize];
-            Array.Copy(ciphertext, actualCiphertext, actualCiphertext.Length);
-            Array.Copy(ciphertext, actualCiphertext.Length, tag, 0, TagSize);
+            Array.Copy(ciphertextAndTag, ciphertext, ciphertext.Length);
+            Array.Copy(ciphertextAndTag, ciphertext.Length, tag, 0, TagSize);
 
-            var plaintext = new byte[actualCiphertext.Length];
+            var plaintext = new byte[ciphertext.Length];
             Decrypt(nonce, ciphertext, tag, plaintext, associatedData);
             return plaintext;
         }

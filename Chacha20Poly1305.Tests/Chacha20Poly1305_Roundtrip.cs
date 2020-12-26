@@ -1,7 +1,7 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 
-namespace Chacha20Poly1305.Tests
+namespace AtlasRhythm.Cryptography.Tests
 {
     [TestClass]
     public class Chacha20Poly1305_Roundtrip
@@ -9,42 +9,41 @@ namespace Chacha20Poly1305.Tests
         [TestMethod]
         public void Roundtrip()
         {
-            var key = TestData.Key;
-            var nonce = TestData.Nonce;
-            var plaintext = new byte[2112];
-            var associatedData = TestData.AssociatedData;
+            var key = new byte[Chacha20Poly1305.KeySize];
+            var nonce = new byte[Chacha20Poly1305.NonceSize];
+            var plaintext = new byte[1024];
+            var associatedData = new byte[12];
 
-            new Random(2112).NextBytes(plaintext);
-
-            var ciphertext = new byte[plaintext.Length];
-            var tag = new byte[Chacha20Poly1305.TagSize];
-            var computedPlaintext = new byte[ciphertext.Length];
+            var rng = new Random(2112);
+            rng.NextBytes(key);
+            rng.NextBytes(nonce);
+            rng.NextBytes(plaintext);
+            rng.NextBytes(associatedData);
 
             using var aead = new Chacha20Poly1305(key);
-            aead.Encrypt(nonce, plaintext, ciphertext, tag, associatedData);
-            aead.Decrypt(nonce, ciphertext, tag, computedPlaintext, associatedData);
+            var output = aead.Encrypt(nonce, plaintext, associatedData);
+            var newPlaintext = aead.Decrypt(nonce, output, associatedData);
 
-            CollectionAssert.AreEqual(plaintext, computedPlaintext);
+            CollectionAssert.AreEqual(plaintext, newPlaintext);
         }
 
         [TestMethod]
         public void Roundtrip_NoAssociatedData()
         {
-            var key = TestData.Key;
-            var nonce = TestData.Nonce;
-            var plaintext = new byte[2112];
+            var key = new byte[Chacha20Poly1305.KeySize];
+            var nonce = new byte[Chacha20Poly1305.NonceSize];
+            var plaintext = new byte[1024];
 
-            new Random(2112).NextBytes(plaintext);
-
-            var ciphertext = new byte[plaintext.Length];
-            var tag = new byte[Chacha20Poly1305.TagSize];
-            var computedPlaintext = new byte[ciphertext.Length];
+            var rng = new Random(2112);
+            rng.NextBytes(key);
+            rng.NextBytes(nonce);
+            rng.NextBytes(plaintext);
 
             using var aead = new Chacha20Poly1305(key);
-            aead.Encrypt(nonce, plaintext, ciphertext, tag);
-            aead.Decrypt(nonce, ciphertext, tag, computedPlaintext);
+            var output = aead.Encrypt(nonce, plaintext);
+            var newPlaintext = aead.Decrypt(nonce, output);
 
-            CollectionAssert.AreEqual(plaintext, computedPlaintext);
+            CollectionAssert.AreEqual(plaintext, newPlaintext);
         }
     }
 }

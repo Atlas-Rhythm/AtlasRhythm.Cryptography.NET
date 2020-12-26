@@ -1,8 +1,7 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System;
 using System.Security.Cryptography;
 
-namespace Chacha20Poly1305.Tests
+namespace AtlasRhythm.Cryptography.Tests
 {
     [TestClass]
     public class Chacha20Poly1305_Decrypt

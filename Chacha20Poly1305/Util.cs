@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-namespace Chacha20Poly1305
+namespace AtlasRhythm.Cryptography
 {
     internal static class Extensions
     {

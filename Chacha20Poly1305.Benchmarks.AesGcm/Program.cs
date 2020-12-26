@@ -1,6 +1,6 @@
 ﻿using BenchmarkDotNet.Running;
 
-namespace Chacha20Poly1305.Benchmarks
+namespace AtlasRhythm.Cryptography.Benchmarks
 {
     class Program
     {

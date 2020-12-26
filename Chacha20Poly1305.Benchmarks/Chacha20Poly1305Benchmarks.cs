@@ -2,13 +2,13 @@
 using BenchmarkDotNet.Jobs;
 using System;
 
-namespace Chacha20Poly1305.Benchmarks
+namespace AtlasRhythm.Cryptography.Benchmarks
 {
     [SimpleJob(RuntimeMoniker.NetCoreApp50, baseline: true)]
     [SimpleJob(RuntimeMoniker.CoreRt50)]
     [SimpleJob(RuntimeMoniker.Net48)]
     [SimpleJob(RuntimeMoniker.Mono)]
-    public class Benchmarks
+    public class Chacha20Poly1305Benchmarks
     {
         private Chacha20Poly1305 aead;
 

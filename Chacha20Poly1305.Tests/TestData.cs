@@ -1,4 +1,4 @@
-﻿namespace Chacha20Poly1305.Tests
+﻿namespace AtlasRhythm.Cryptography.Tests
 {
     internal static class TestData
     {

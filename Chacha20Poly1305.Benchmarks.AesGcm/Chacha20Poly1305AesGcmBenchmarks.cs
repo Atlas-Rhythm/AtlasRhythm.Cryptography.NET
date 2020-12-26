@@ -3,11 +3,11 @@ using BenchmarkDotNet.Jobs;
 using System;
 using System.Security.Cryptography;
 
-namespace Chacha20Poly1305.Benchmarks
+namespace AtlasRhythm.Cryptography.Benchmarks
 {
     [SimpleJob(RuntimeMoniker.NetCoreApp50, baseline: true)]
     [SimpleJob(RuntimeMoniker.CoreRt50)]
-    public class Benchmarks
+    public class Chacha20Poly1305AesGcmBenchmarks
     {
         private Chacha20Poly1305 chacha20Poly1305;
         private AesGcm aesGcm;
