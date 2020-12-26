@@ -239,6 +239,8 @@ namespace AtlasRhythm.Cryptography
         {
             int i;
             byte* poly1305key = stackalloc byte[Poly1305.KeySize];
+            byte* padding = stackalloc byte[Poly1305.BlockSize - 1];
+            byte* u64 = stackalloc byte[sizeof(ulong)];
 
             Chacha20.Block(chacha20State, chacha20X, chacha20Bytes);
             for (i = 0; i < Poly1305.KeySize; ++i) poly1305key[i] = chacha20Bytes[i];
@@ -246,22 +248,22 @@ namespace AtlasRhythm.Cryptography
             int padding1 = Poly1305.BlockSize - (associatedDataSize % Poly1305.BlockSize);
             int padding2 = Poly1305.BlockSize - (ciphertextSize % Poly1305.BlockSize);
 
-            int ciphertextStart = associatedDataSize + padding1;
-            int additionalDataSizeStart = ciphertextStart + ciphertextSize + padding2;
-            int ciphertextSizeStart = additionalDataSizeStart + sizeof(ulong);
+            Poly1305.State poly1305State;
+            Poly1305.Init(&poly1305State, poly1305key);
 
-            int poly1305MessageSize = ciphertextSizeStart + sizeof(ulong);
-            var poly1305Message = new byte[poly1305MessageSize];
+            Poly1305.Update(&poly1305State, associatedData, associatedDataSize);
+            Poly1305.Update(&poly1305State, padding, padding1);
 
-            fixed (byte* m = poly1305Message)
-            {
-                for (i = 0; i < associatedDataSize; ++i) m[i] = associatedData[i];
-                for (i = 0; i < ciphertextSize; ++i) m[i + ciphertextStart] = ciphertext[i];
-                Memory.U64ToU8((ulong)associatedDataSize, m + additionalDataSizeStart);
-                Memory.U64ToU8((ulong)ciphertextSize, m + ciphertextSizeStart);
+            Poly1305.Update(&poly1305State, ciphertext, ciphertextSize);
+            Poly1305.Update(&poly1305State, padding, padding2);
 
-                Poly1305.Mac(poly1305key, m, poly1305MessageSize, tag);
-            }
+            Memory.U64ToU8((ulong)associatedDataSize, u64);
+            Poly1305.Update(&poly1305State, u64, sizeof(ulong));
+
+            Memory.U64ToU8((ulong)ciphertextSize, u64);
+            Poly1305.Update(&poly1305State, u64, sizeof(ulong));
+
+            Poly1305.Finish(&poly1305State, tag);
         }
 
         private static void CheckKey(byte[] key)

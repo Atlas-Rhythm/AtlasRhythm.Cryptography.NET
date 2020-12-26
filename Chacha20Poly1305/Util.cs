@@ -33,7 +33,7 @@ namespace AtlasRhythm.Cryptography
             u8[0] = (byte)( u32        & 0xff);
             u8[1] = (byte)((u32 >>  8) & 0xff);
             u8[2] = (byte)((u32 >> 16) & 0xff);
-            u8[3] = (byte)((u32 >> 24) & 0xff);
+            u8[3] = (byte)( u32 >> 24        );
         }
 
         public static void U64ToU8(ulong u64, byte* u8)
@@ -45,7 +45,7 @@ namespace AtlasRhythm.Cryptography
             u8[4] = (byte)((u64 >> 32) & 0xff);
             u8[5] = (byte)((u64 >> 40) & 0xff);
             u8[6] = (byte)((u64 >> 48) & 0xff);
-            u8[7] = (byte)((u64 >> 56) & 0xff);
+            u8[7] = (byte)( u64 >> 56        );
         }
     }
 }

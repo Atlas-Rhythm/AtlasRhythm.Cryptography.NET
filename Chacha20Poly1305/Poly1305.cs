@@ -20,7 +20,7 @@ namespace AtlasRhythm.Cryptography
         public const int TagSize = 128 / 8;
         public const int BlockSize = 16;
 
-        private struct State
+        public ref struct State
         {
             public fixed uint r[5];
             public fixed uint h[5];
@@ -28,14 +28,6 @@ namespace AtlasRhythm.Cryptography
             public int leftover;
             public fixed byte buffer[BlockSize];
             public bool final;
-        }
-
-        public static void Mac(byte* key, byte* data, int size, byte* mac)
-        {
-            State state;
-            Init(&state, key);
-            Update(&state, data, size);
-            Finish(&state, mac);
         }
 
         public static bool Verify(byte* mac1, byte* mac2)
@@ -48,7 +40,7 @@ namespace AtlasRhythm.Cryptography
             return (diff & 1) != 0;
         }
 
-        private static void Update(State* state, byte* data, int size)
+        public static void Update(State* state, byte* data, int size)
         {
             int i;
 
@@ -84,7 +76,7 @@ namespace AtlasRhythm.Cryptography
             }
         }
 
-        private static void Init(State* state, byte* key)
+        public static void Init(State* state, byte* key)
         {
             state->r[0] =  Memory.U8ToU32(key     )       & 0x3ffffff;
             state->r[1] = (Memory.U8ToU32(key +  3) >> 2) & 0x3ffff03;
@@ -96,6 +88,85 @@ namespace AtlasRhythm.Cryptography
             state->pad[1] = Memory.U8ToU32(key + 20);
             state->pad[2] = Memory.U8ToU32(key + 24);
             state->pad[3] = Memory.U8ToU32(key + 28);
+        }
+
+        public static void Finish(State* state, byte* mac)
+        {
+            uint h0, h1, h2, h3, h4, c;
+            uint g0, g1, g2, g3, g4;
+            ulong f;
+            uint mask;
+
+            if (state->leftover != 0)
+            {
+                int i = state->leftover;
+                state->buffer[i++] = 1;
+                for (; i < BlockSize; ++i) state->buffer[i] = 0;
+                state->final = true;
+                Blocks(state, state->buffer, BlockSize);
+            }
+
+            h0 = state->h[0];
+            h1 = state->h[1];
+            h2 = state->h[2];
+            h3 = state->h[3];
+            h4 = state->h[4];
+
+                         c = h1 >> 26; h1 &= 0x3ffffff;
+            h2 += c;     c = h2 >> 26; h2 &= 0x3ffffff;
+            h3 += c;     c = h3 >> 26; h3 &= 0x3ffffff;
+            h4 += c;     c = h4 >> 26; h4 &= 0x3ffffff;
+            h0 += c * 5; c = h0 >> 26; h0 &= 0x3ffffff;
+            h1 += c;
+
+            g0 = h0 + 5; c = g0 >> 26; g0 &= 0x3ffffff;
+            g1 = h1 + c; c = g1 >> 26; g1 &= 0x3ffffff;
+            g2 = h2 + c; c = g2 >> 26; g2 &= 0x3ffffff;
+            g3 = h3 + c; c = g3 >> 26; g3 &= 0x3ffffff;
+            g4 = h4 + c - (1u << 26);
+
+            mask = (g4 >> ((sizeof(uint) * 8) - 1)) - 1;
+            g0 &= mask;
+            g1 &= mask;
+            g2 &= mask;
+            g3 &= mask;
+            g4 &= mask;
+            mask = ~mask;
+            h0 = (h0 & mask) | g0;
+            h1 = (h1 & mask) | g1;
+            h2 = (h2 & mask) | g2;
+            h3 = (h3 & mask) | g3;
+            h4 = (h4 & mask) | g4;
+
+            h0 = ( h0        | (h1 << 26)) & 0xffffffff;
+            h1 = ((h1 >>  6) | (h2 << 20)) & 0xffffffff;
+            h2 = ((h2 >> 12) | (h3 << 14)) & 0xffffffff;
+            h3 = ((h3 >> 18) | (h4 <<  8)) & 0xffffffff;
+
+            f = (ulong)h0 + state->pad[0];             h0 = (uint)f;
+            f = (ulong)h1 + state->pad[1] + (f >> 32); h1 = (uint)f;
+            f = (ulong)h2 + state->pad[2] + (f >> 32); h2 = (uint)f;
+            f = (ulong)h3 + state->pad[3] + (f >> 32); h3 = (uint)f;
+
+            Memory.U32ToU8(h0, mac     );
+            Memory.U32ToU8(h1, mac +  4);
+            Memory.U32ToU8(h2, mac +  8);
+            Memory.U32ToU8(h3, mac + 12);
+
+            state->h[0] = 0;
+            state->h[1] = 0;
+            state->h[2] = 0;
+            state->h[3] = 0;
+            state->h[4] = 0;
+            state->r[0] = 0;
+            state->r[1] = 0;
+            state->r[2] = 0;
+            state->r[3] = 0;
+            state->r[4] = 0;
+            state->pad[0] = 0;
+            state->pad[1] = 0;
+            state->pad[2] = 0;
+            state->pad[3] = 0;
         }
 
         private static void Blocks(State* state, byte* data, int size)
@@ -155,85 +226,6 @@ namespace AtlasRhythm.Cryptography
             state->h[2] = h2;
             state->h[3] = h3;
             state->h[4] = h4;
-        }
-
-        private static void Finish(State* state, byte* mac)
-        {
-            uint h0, h1, h2, h3, h4, c;
-            uint g0, g1, g2, g3, g4;
-            ulong f;
-            uint mask;
-
-            if (state->leftover != 0)
-            {
-                int i = state->leftover;
-                state->buffer[i++] = 1;
-                for (; i < BlockSize; ++i) state->buffer[i] = 0;
-                state->final = true;
-                Blocks(state, state->buffer, BlockSize);
-            }
-
-            h0 = state->h[0];
-            h1 = state->h[1];
-            h2 = state->h[2];
-            h3 = state->h[3];
-            h4 = state->h[4];
-
-                         c = h1 >> 26; h1 &= 0x3ffffff;
-            h2 += c;     c = h2 >> 26; h2 &= 0x3ffffff;
-            h3 += c;     c = h3 >> 26; h3 &= 0x3ffffff;
-            h4 += c;     c = h4 >> 26; h4 &= 0x3ffffff;
-            h0 += c * 5; c = h0 >> 26; h0 &= 0x3ffffff;
-            h1 += c;
-
-            g0 = h0 + 5; c = g0 >> 26; g0 &= 0x3ffffff;
-            g1 = h1 + c; c = g1 >> 26; g1 &= 0x3ffffff;
-            g2 = h2 + c; c = g2 >> 26; g2 &= 0x3ffffff;
-            g3 = h3 + c; c = g3 >> 26; g3 &= 0x3ffffff;
-            g4 = h4 + c - (1u << 26);
-
-            mask = (g4 >> ((sizeof(uint) * 8) - 1)) - 1;
-            g0 &= mask;
-            g1 &= mask;
-            g2 &= mask;
-            g3 &= mask;
-            g4 &= mask;
-            mask = ~mask;
-            h0 = (h0 & mask) | g0;
-            h1 = (h1 & mask) | g1;
-            h2 = (h2 & mask) | g2;
-            h3 = (h3 & mask) | g3;
-            h4 = (h4 & mask) | g4;
-
-            h0 = ( h0        | (h1 << 26)) & 0xffffffff;
-            h1 = ((h1 >>  6) | (h2 << 20)) & 0xffffffff;
-            h2 = ((h2 >> 12) | (h3 << 14)) & 0xffffffff;
-            h3 = ((h3 >> 18) | (h4 <<  8)) & 0xffffffff;
-
-            f = (ulong)h0 + state->pad[0]            ; h0 = (uint)f;
-            f = (ulong)h1 + state->pad[1] + (f >> 32); h1 = (uint)f;
-            f = (ulong)h2 + state->pad[2] + (f >> 32); h2 = (uint)f;
-            f = (ulong)h3 + state->pad[3] + (f >> 32); h3 = (uint)f;
-
-            Memory.U32ToU8(h0, mac     );
-            Memory.U32ToU8(h1, mac +  4);
-            Memory.U32ToU8(h2, mac +  8);
-            Memory.U32ToU8(h3, mac + 12);
-
-            state->h[0] = 0;
-            state->h[1] = 0;
-            state->h[2] = 0;
-            state->h[3] = 0;
-            state->h[4] = 0;
-            state->r[0] = 0;
-            state->r[1] = 0;
-            state->r[2] = 0;
-            state->r[3] = 0;
-            state->r[4] = 0;
-            state->pad[0] = 0;
-            state->pad[1] = 0;
-            state->pad[2] = 0;
-            state->pad[3] = 0;
         }
     }
 }
