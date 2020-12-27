@@ -171,22 +171,15 @@ namespace AtlasRhythm.Cryptography
         {
             int i;
             uint* chacha20State = stackalloc uint[Chacha20.StateSize];
-            uint* chacha20X = stackalloc uint[Chacha20.StateSize];
-            byte* chacha20Bytes = stackalloc byte[Chacha20.StateBytesSize];
 
             for (i = 0; i < size; ++i) ciphertext[i] = plaintext[i];
             Chacha20.State(chacha20State, key, 1, nonce);
-            Chacha20.Cipher(chacha20State, chacha20X, chacha20Bytes, ciphertext, size);
+            Chacha20.Cipher(chacha20State, ciphertext, size);
 
             chacha20State[12] = 0;
-            Tag(ciphertext, size, associatedData, associatedDataSize, chacha20State, chacha20X, chacha20Bytes, tag);
+            Tag(ciphertext, size, associatedData, associatedDataSize, chacha20State, tag);
 
-            for (i = 0; i < Chacha20.StateSize; ++i)
-            {
-                chacha20State[i] = 0;
-                chacha20X[i] = 0;
-            }
-            for (i = 0; i < Chacha20.StateBytesSize; ++i) chacha20Bytes[i] = 0;
+            for (i = 4; i < Chacha20.StateSize; ++i) chacha20State[i] = 0;
         }
 
         private static unsafe bool Decrypt(
@@ -201,27 +194,20 @@ namespace AtlasRhythm.Cryptography
         {
             int i;
             uint* chacha20State = stackalloc uint[Chacha20.StateSize];
-            uint* chacha20X = stackalloc uint[Chacha20.StateSize];
-            byte* chacha20Bytes = stackalloc byte[Chacha20.StateBytesSize];
             byte* computedTag = stackalloc byte[Poly1305.TagSize];
 
             Chacha20.State(chacha20State, key, 0, nonce);
-            Tag(ciphertext, size, associatedData, associatedDataSize, chacha20State, chacha20X, chacha20Bytes, computedTag);
+            Tag(ciphertext, size, associatedData, associatedDataSize, chacha20State, computedTag);
             bool valid = Poly1305.Verify(tag, computedTag);
 
             if (valid)
             {
                 for (i = 0; i < size; ++i) plaintext[i] = ciphertext[i];
                 chacha20State[12] = 1;
-                Chacha20.Cipher(chacha20State, chacha20X, chacha20Bytes, plaintext, size);
+                Chacha20.Cipher(chacha20State, plaintext, size);
             }
 
-            for (i = 0; i < Chacha20.StateSize; ++i)
-            {
-                chacha20State[i] = 0;
-                chacha20X[i] = 0;
-            }
-            for (i = 0; i < Chacha20.StateBytesSize; ++i) chacha20Bytes[i] = 0;
+            for (i = 4; i < Chacha20.StateSize; ++i) chacha20State[i] = 0;
             for (i = 0; i < Poly1305.TagSize; ++i) computedTag[i] = 0;
 
             return valid;
@@ -233,8 +219,6 @@ namespace AtlasRhythm.Cryptography
             byte* associatedData,
             int associatedDataSize,
             uint* chacha20State,
-            uint* chacha20X,
-            byte* chacha20Bytes,
             byte* tag)
         {
             int i;
@@ -242,8 +226,7 @@ namespace AtlasRhythm.Cryptography
             byte* padding = stackalloc byte[Poly1305.BlockSize - 1];
             byte* u64 = stackalloc byte[sizeof(ulong)];
 
-            Chacha20.Block(chacha20State, chacha20X, chacha20Bytes);
-            for (i = 0; i < Poly1305.KeySize; ++i) poly1305key[i] = chacha20Bytes[i];
+            Chacha20.Cipher(chacha20State, poly1305key, Poly1305.KeySize);
 
             int padding1 = Poly1305.BlockSize - (associatedDataSize % Poly1305.BlockSize);
             int padding2 = Poly1305.BlockSize - (ciphertextSize % Poly1305.BlockSize);
@@ -264,6 +247,8 @@ namespace AtlasRhythm.Cryptography
             Poly1305.Update(&poly1305State, u64, sizeof(ulong));
 
             Poly1305.Finish(&poly1305State, tag);
+
+            for (i = 0; i < Poly1305.KeySize; ++i) poly1305key[i] = 0;
         }
 
         private static void CheckKey(byte[] key)

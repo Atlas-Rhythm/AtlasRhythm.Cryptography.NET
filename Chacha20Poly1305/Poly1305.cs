@@ -80,7 +80,7 @@ namespace AtlasRhythm.Cryptography
 
         public static void Init(State* state, byte* key)
         {
-            state->r[0] =  Memory.U8ToU32(key     )       & 0x3ffffff;
+            state->r[0] =  Memory.U8ToU32(key)            & 0x3ffffff;
             state->r[1] = (Memory.U8ToU32(key +  3) >> 2) & 0x3ffff03;
             state->r[2] = (Memory.U8ToU32(key +  6) >> 4) & 0x3ffc0ff;
             state->r[3] = (Memory.U8ToU32(key +  9) >> 6) & 0x3f03fff;
@@ -141,7 +141,7 @@ namespace AtlasRhythm.Cryptography
             h3 = (h3 & mask) | g3;
             h4 = (h4 & mask) | g4;
 
-            h0 = ( h0        | (h1 << 26)) & 0xffffffff;
+            h0 =  (h0        | (h1 << 26)) & 0xffffffff;
             h1 = ((h1 >>  6) | (h2 << 20)) & 0xffffffff;
             h2 = ((h2 >> 12) | (h3 << 14)) & 0xffffffff;
             h3 = ((h3 >> 18) | (h4 <<  8)) & 0xffffffff;
@@ -151,7 +151,7 @@ namespace AtlasRhythm.Cryptography
             f = (ulong)h2 + state->pad[2] + (f >> 32); h2 = (uint)f;
             f = (ulong)h3 + state->pad[3] + (f >> 32); h3 = (uint)f;
 
-            Memory.U32ToU8(h0, mac     );
+            Memory.U32ToU8(h0, mac);
             Memory.U32ToU8(h1, mac +  4);
             Memory.U32ToU8(h2, mac +  8);
             Memory.U32ToU8(h3, mac + 12);
@@ -204,7 +204,7 @@ namespace AtlasRhythm.Cryptography
 
             while (size >= BlockSize)
             {
-                h0 +=  Memory.U8ToU32(data     )       & 0x3ffffff;
+                h0 +=  Memory.U8ToU32(data)            & 0x3ffffff;
                 h1 += (Memory.U8ToU32(data +  3) >> 2) & 0x3ffffff;
                 h2 += (Memory.U8ToU32(data +  6) >> 4) & 0x3ffffff;
                 h3 += (Memory.U8ToU32(data +  9) >> 6) & 0x3ffffff;
