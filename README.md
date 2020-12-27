@@ -8,7 +8,19 @@ Pure C#, performant and [RFC 8439](https://tools.ietf.org/html/rfc8439) complian
 
 ChaCha20 is stream cipher which is faster than AES in software-only implementations. Poly1305 is a fast message authentication code (MAC). They can be combined to achieve Authenticated Encryption with Associated Data (AEAD) as a fast software-only alternative to AES in Galois Counter Mode (GCM).
 
-This library aims to be a portable, fast and correct implementation which can easily be integrated into any .NET project as an alternative to AES-GCM. It supports .NET Standard 1.3 and up and .NET Framework 3.5 and up. The public API tries to replicate that of .NET Standard 2.1's [AesGcm](https://docs.microsoft.com/en-us/dotnet/api/system.security.cryptography.aesgcm?view=netstandard-2.1). Implementation is based on libsodium. Neither encryption or decryption allocate and sensitive information is zeroed from memory before freeing resources.
+This library aims to be a portable, fast and correct implementation which can easily be integrated into any .NET project as an alternative to AES-GCM. The public API tries to replicate that of .NET Standard 2.1's [AesGcm](https://docs.microsoft.com/en-us/dotnet/api/system.security.cryptography.aesgcm?view=netstandard-2.1). Neither encryption or decryption allocate and sensitive information is zeroed from memory before freeing resources.
+
+## Support
+
+| .NET version | [Span](https://docs.microsoft.com/en-us/dotnet/api/system.span-1) support | SIMD acceleration |
+| --- | --- | --- |
+| **.NET 5.0** | Yes | Yes |
+| **.NET Core 3.1** | Yes | Yes |
+| **.NET Core 2.1** | Yes | No |
+| **.NET Standard 2.1** | Yes | No |
+| **.NET Standard 1.3** | No | No |
+| **.NET Framework 4.5** | No | No |
+| **.NET Framework 3.5** | No | No |
 
 ## Usage
 
@@ -62,7 +74,7 @@ catch (CryptographicException ex)
 
 The solution contains an extensive test suite using [test vectors from the RFC](https://tools.ietf.org/html/rfc8439#section-2.8.2) and random data.
 
-To run the tests, simply run `dotnet test` from the [Chacha20Poly1305.Tests](Chacha20Poly1305.Tests) directory.
+To run the tests, either run `dotnet test -f net5.0` (SIMD) or `dotnet test -f netcoreapp2.1` (no SIMD) from the [Chacha20Poly1305.Tests](Chacha20Poly1305.Tests) directory.
 
 ## Benchmarks
 

@@ -16,8 +16,8 @@ namespace AtlasRhythm.Cryptography.Tests
             var ciphertext = new byte[plaintext.Length];
             var tag = new byte[Chacha20Poly1305.TagSize];
 
-            using var aead = new Chacha20Poly1305(key);
-            aead.Encrypt(nonce, plaintext, ciphertext, tag, associatedData);
+            using (var aead = new Chacha20Poly1305(key))
+                aead.Encrypt(nonce, plaintext, ciphertext, tag, associatedData);
 
             CollectionAssert.AreEqual(TestData.Ciphertext, ciphertext);
             CollectionAssert.AreEqual(TestData.Tag, tag);
@@ -36,8 +36,8 @@ namespace AtlasRhythm.Cryptography.Tests
             var ciphertext = new byte[plaintext.Length];
             var tag = new byte[Chacha20Poly1305.TagSize];
 
-            using var aead = new Chacha20Poly1305(key);
-            aead.Encrypt(nonce, plaintext, ciphertext, tag, associatedData);
+            using (var aead = new Chacha20Poly1305(key))
+                aead.Encrypt(nonce, plaintext, ciphertext, tag, associatedData);
 
             CollectionAssert.AreNotEqual(TestData.Ciphertext, ciphertext);
             CollectionAssert.AreNotEqual(TestData.Tag, tag);
@@ -56,8 +56,8 @@ namespace AtlasRhythm.Cryptography.Tests
             var ciphertext = new byte[plaintext.Length];
             var tag = new byte[Chacha20Poly1305.TagSize];
 
-            using var aead = new Chacha20Poly1305(key);
-            aead.Encrypt(nonce, plaintext, ciphertext, tag, associatedData);
+            using (var aead = new Chacha20Poly1305(key))
+                aead.Encrypt(nonce, plaintext, ciphertext, tag, associatedData);
 
             CollectionAssert.AreNotEqual(TestData.Ciphertext, ciphertext);
             CollectionAssert.AreNotEqual(TestData.Tag, tag);
@@ -76,8 +76,8 @@ namespace AtlasRhythm.Cryptography.Tests
             var ciphertext = new byte[plaintext.Length];
             var tag = new byte[Chacha20Poly1305.TagSize];
 
-            using var aead = new Chacha20Poly1305(key);
-            aead.Encrypt(nonce, plaintext, ciphertext, tag, associatedData);
+            using (var aead = new Chacha20Poly1305(key))
+                aead.Encrypt(nonce, plaintext, ciphertext, tag, associatedData);
 
             CollectionAssert.AreNotEqual(TestData.Ciphertext, ciphertext);
             CollectionAssert.AreNotEqual(TestData.Tag, tag);
@@ -96,8 +96,8 @@ namespace AtlasRhythm.Cryptography.Tests
             var ciphertext = new byte[plaintext.Length];
             var tag = new byte[Chacha20Poly1305.TagSize];
 
-            using var aead = new Chacha20Poly1305(key);
-            aead.Encrypt(nonce, plaintext, ciphertext, tag, associatedData);
+            using (var aead = new Chacha20Poly1305(key))
+                aead.Encrypt(nonce, plaintext, ciphertext, tag, associatedData);
 
             CollectionAssert.AreEqual(TestData.Ciphertext, ciphertext);
             CollectionAssert.AreNotEqual(TestData.Tag, tag);
@@ -113,8 +113,8 @@ namespace AtlasRhythm.Cryptography.Tests
             var ciphertext = new byte[plaintext.Length];
             var tag = new byte[Chacha20Poly1305.TagSize];
 
-            using var aead = new Chacha20Poly1305(key);
-            aead.Encrypt(nonce, plaintext, ciphertext, tag);
+            using (var aead = new Chacha20Poly1305(key))
+                aead.Encrypt(nonce, plaintext, ciphertext, tag);
 
             CollectionAssert.AreEqual(TestData.Ciphertext, ciphertext);
             CollectionAssert.AreNotEqual(TestData.Tag, tag);

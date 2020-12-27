@@ -173,7 +173,7 @@ namespace AtlasRhythm.Cryptography
         }
 
 
-#if NET5_0
+#if NET5_0 || NETCOREAPP3_1
         [MethodImpl(MethodImplOptions.AggressiveOptimization)]
 #endif
         private static void Blocks(State* state, byte* data, int size)

@@ -17,8 +17,8 @@ namespace AtlasRhythm.Cryptography.Tests
 
             var plaintext = new byte[ciphertext.Length];
 
-            using var aead = new Chacha20Poly1305(key);
-            aead.Decrypt(nonce, ciphertext, tag, plaintext, associatedData);
+            using (var aead = new Chacha20Poly1305(key))
+                aead.Decrypt(nonce, ciphertext, tag, plaintext, associatedData);
 
             CollectionAssert.AreEqual(TestData.Plaintext, plaintext);
         }
@@ -38,8 +38,8 @@ namespace AtlasRhythm.Cryptography.Tests
 
             void action()
             {
-                using var aead = new Chacha20Poly1305(key);
-                aead.Decrypt(nonce, ciphertext, tag, plaintext, associatedData);
+                using (var aead = new Chacha20Poly1305(key))
+                    aead.Decrypt(nonce, ciphertext, tag, plaintext, associatedData);
             }
 
             var ex = Assert.ThrowsException<CryptographicException>(action);
@@ -61,8 +61,8 @@ namespace AtlasRhythm.Cryptography.Tests
 
             void action()
             {
-                using var aead = new Chacha20Poly1305(key);
-                aead.Decrypt(nonce, ciphertext, tag, plaintext, associatedData);
+                using (var aead = new Chacha20Poly1305(key))
+                    aead.Decrypt(nonce, ciphertext, tag, plaintext, associatedData);
             }
 
             var ex = Assert.ThrowsException<CryptographicException>(action);
@@ -84,8 +84,8 @@ namespace AtlasRhythm.Cryptography.Tests
 
             void action()
             {
-                using var aead = new Chacha20Poly1305(key);
-                aead.Decrypt(nonce, ciphertext, tag, plaintext, associatedData);
+                using (var aead = new Chacha20Poly1305(key))
+                    aead.Decrypt(nonce, ciphertext, tag, plaintext, associatedData);
             }
 
             var ex = Assert.ThrowsException<CryptographicException>(action);
@@ -107,8 +107,8 @@ namespace AtlasRhythm.Cryptography.Tests
 
             void action()
             {
-                using var aead = new Chacha20Poly1305(key);
-                aead.Decrypt(nonce, ciphertext, tag, plaintext, associatedData);
+                using (var aead = new Chacha20Poly1305(key))
+                    aead.Decrypt(nonce, ciphertext, tag, plaintext, associatedData);
             }
 
             var ex = Assert.ThrowsException<CryptographicException>(action);
@@ -130,8 +130,8 @@ namespace AtlasRhythm.Cryptography.Tests
 
             void action()
             {
-                using var aead = new Chacha20Poly1305(key);
-                aead.Decrypt(nonce, ciphertext, tag, plaintext, associatedData);
+                using (var aead = new Chacha20Poly1305(key))
+                    aead.Decrypt(nonce, ciphertext, tag, plaintext, associatedData);
             }
 
             var ex = Assert.ThrowsException<CryptographicException>(action);
@@ -150,8 +150,8 @@ namespace AtlasRhythm.Cryptography.Tests
 
             void action()
             {
-                using var aead = new Chacha20Poly1305(key);
-                aead.Decrypt(nonce, ciphertext, tag, plaintext);
+                using (var aead = new Chacha20Poly1305(key))
+                    aead.Decrypt(nonce, ciphertext, tag, plaintext);
             }
 
             var ex = Assert.ThrowsException<CryptographicException>(action);

@@ -20,11 +20,13 @@ namespace AtlasRhythm.Cryptography.Tests
             rng.NextBytes(plaintext);
             rng.NextBytes(associatedData);
 
-            using var aead = new Chacha20Poly1305(key);
-            var output = aead.Encrypt(nonce, plaintext, associatedData);
-            var newPlaintext = aead.Decrypt(nonce, output, associatedData);
+            using (var aead = new Chacha20Poly1305(key))
+            {
+                var output = aead.Encrypt(nonce, plaintext, associatedData);
+                var newPlaintext = aead.Decrypt(nonce, output, associatedData);
 
-            CollectionAssert.AreEqual(plaintext, newPlaintext);
+                CollectionAssert.AreEqual(plaintext, newPlaintext);
+            }
         }
 
         [TestMethod]
@@ -39,11 +41,13 @@ namespace AtlasRhythm.Cryptography.Tests
             rng.NextBytes(nonce);
             rng.NextBytes(plaintext);
 
-            using var aead = new Chacha20Poly1305(key);
-            var output = aead.Encrypt(nonce, plaintext);
-            var newPlaintext = aead.Decrypt(nonce, output);
+            using (var aead = new Chacha20Poly1305(key))
+            {
+                var output = aead.Encrypt(nonce, plaintext);
+                var newPlaintext = aead.Decrypt(nonce, output);
 
-            CollectionAssert.AreEqual(plaintext, newPlaintext);
+                CollectionAssert.AreEqual(plaintext, newPlaintext);
+            }
         }
     }
 }
