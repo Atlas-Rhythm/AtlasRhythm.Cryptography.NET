@@ -7,6 +7,7 @@ namespace AtlasRhythm.Cryptography.Benchmarks
 {
     [SimpleJob(RuntimeMoniker.NetCoreApp50, baseline: true)]
     [SimpleJob(RuntimeMoniker.CoreRt50)]
+    [RPlotExporter]
     public class Chacha20Poly1305Benchmarks
     {
         private Chacha20Poly1305 chacha20Poly1305;

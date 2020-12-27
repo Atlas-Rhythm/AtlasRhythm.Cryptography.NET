@@ -70,25 +70,7 @@ The benchmarks compare performance against .NET's [AesGcm](https://docs.microsof
 
 They can be run from the [Chacha20Poly1305.Benchmarks](Chacha20Poly1305.Benchmarks) directory by running `dotnet run -c Release`.
 
-### Sample results
-
-> Intel Core i7-7700HQ @ 2.8GHz
-
-| Method | Job | Runtime | N | Mean | Error | StdDev | Ratio | RatioSD |
-| --- | --- | --- | --- | --: | --: | --: | --: | --: |
-| Chacha20Poly1305Roundtrip | .NET Core 5.0 | .NET Core 5.0 | 1024 | 9.293 us | 0.1055 us | 0.0881 us | 1.00 | 0.00 |
-| SodiumChacha20Poly1305Roundtrip | .NET Core 5.0 | .NET Core 5.0 | 1024 | 3.501 us | 0.0488 us | 0.0456 us | 0.38 | 0.00 |
-| AesGcmRoundtrip | .NET Core 5.0 | .NET Core 5.0 | 1024 | 9.353 us | 0.0537 us | 0.0503 us | 1.01 | 0.01 |
-| Chacha20Poly1305Roundtrip | CoreRt 5.0 | CoreRt 5.0 | 1024 | 8.985 us | 0.1714 us | 0.1834 us | 0.97 | 0.02 |
-| SodiumChacha20Poly1305Roundtrip | CoreRt 5.0 | CoreRt 5.0 | 1024 | 3.474 us | 0.0316 us | 0.0296 us | 0.37 | 0.01 |
-| AesGcmRoundtrip | CoreRt 5.0 | CoreRt 5.0 | 1024 | 9.546 us | 0.1497 us | 0.1400 us | 1.03 | 0.01 |
-|  |  |  |  |  |  |  |  |  |
-| Chacha20Poly1305Roundtrip | .NET Core 5.0 | .NET Core 5.0 | 1048576 | 8,404.469 us | 74.4725 us | 66.0179 us | 1.00 | 0.00 |
-| SodiumChacha20Poly1305Roundtrip | .NET Core 5.0 | .NET Core 5.0 | 1048576 | 3,058.697 us | 58.1749 us | 59.7414 us | 0.36 | 0.01 |
-| AesGcmRoundtrip | .NET Core 5.0 | .NET Core 5.0 | 1048576 | 9,089.818 us | 77.7743 us | 68.9449 us | 1.08 | 0.01 |
-| Chacha20Poly1305Roundtrip | CoreRt 5.0 | CoreRt 5.0 | 1048576 | 8,435.115 us | 94.1931 us | 83.4998 us | 1.00 | 0.01 |
-| SodiumChacha20Poly1305Roundtrip | CoreRt 5.0 | CoreRt 5.0 | 1048576 | 3,058.478 us | 21.5866 us | 19.1360 us | 0.36 | 0.00 |
-| AesGcmRoundtrip | CoreRt 5.0 | CoreRt 5.0 | 1048576 | 9,085.043 us | 114.6314 us | 107.2263 us | 1.08 | 0.01 |
+[Sample results](BenchmarkResults.md)
 
 ## License
 
