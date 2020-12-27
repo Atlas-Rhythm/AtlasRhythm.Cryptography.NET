@@ -72,17 +72,17 @@ catch (CryptographicException ex)
 
 ## Tests
 
-The solution contains an extensive test suite using [test vectors from the RFC](https://tools.ietf.org/html/rfc8439#section-2.8.2) and random data.
+The solution contains an extensive test suite using [test vectors from the RFC](https://tools.ietf.org/html/rfc8439#section-2.8.2) and random data. AVX2, SSE2 and non-accelerated implementations are all tested (if the hardware supports it).
 
-To run the tests, either run `dotnet test -f net5.0` (SIMD) or `dotnet test -f netcoreapp2.1` (no SIMD) from the [Chacha20Poly1305.Tests](Chacha20Poly1305.Tests) directory.
+To run the tests, simply run `dotnet test` from the [Chacha20Poly1305.Tests](Chacha20Poly1305.Tests) directory.
 
 ## Benchmarks
 
-The benchmarks compare performance against .NET's [AesGcm](https://docs.microsoft.com/en-us/dotnet/api/system.security.cryptography.aesgcm?view=netstandard-2.1) and NSec's (libsodium) [Chacha20Poly1305](https://nsec.rocks/docs/api/nsec.cryptography.aeadalgorithm#chacha20poly1305) on .NET 5.0 and CoreRT 5.0.
+The benchmarks compare roundtrip performance against .NET's [AesGcm](https://docs.microsoft.com/en-us/dotnet/api/system.security.cryptography.aesgcm?view=netstandard-2.1) and NSec's (libsodium) [Chacha20Poly1305](https://nsec.rocks/docs/api/nsec.cryptography.aeadalgorithm#chacha20poly1305) for 1KB and 1MB inputs.
 
 They can be run from the [Chacha20Poly1305.Benchmarks](Chacha20Poly1305.Benchmarks) directory by running `dotnet run -c Release`.
 
-[Sample results](BenchmarkResults.md)
+[**Sample results**](BenchmarkResults.md)
 
 ## License
 

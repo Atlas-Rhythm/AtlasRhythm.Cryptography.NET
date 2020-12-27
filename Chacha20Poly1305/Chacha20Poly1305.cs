@@ -48,6 +48,11 @@ namespace AtlasRhythm.Cryptography
         /// </summary>
         public static KeySizes TagByteSizes { get; } = new KeySizes(TagSize, TagSize, 1);
 
+#if DEBUG
+        public const string NoSse2Var = "NO_SSE2";
+        public const string NoAvx2Var = "NO_AVX2";
+#endif
+
         private readonly byte[] key;
 
         /// <summary>

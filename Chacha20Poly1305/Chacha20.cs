@@ -19,6 +19,10 @@ using System.Runtime.Intrinsics;
 using System.Runtime.Intrinsics.X86;
 #endif
 
+#if (NET5_0 || NETCOREAPP3_1) && DEBUG
+using System;
+#endif
+
 namespace AtlasRhythm.Cryptography
 {
     internal static unsafe class Chacha20
@@ -63,16 +67,86 @@ namespace AtlasRhythm.Cryptography
             byte* buffer = stackalloc byte[StateBytesSize];
 
 #if NET5_0 || NETCOREAPP3_1
+#if DEBUG
+            if (string.IsNullOrEmpty(Environment.GetEnvironmentVariable(Chacha20Poly1305.NoSse2Var)) && Sse2.IsSupported)
+#else
             if (Sse2.IsSupported)
+#endif
             {
+#if DEBUG
+                if (string.IsNullOrEmpty(Environment.GetEnvironmentVariable(Chacha20Poly1305.NoAvx2Var)) && Avx2.IsSupported && size >= 2 * StateBytesSize)
+#else
+                if (Avx2.IsSupported && size >= 2 * StateBytesSize)
+#endif
+                {
+                    Vector256<uint> ss0, ss1, ss2, ss3;
+                    Vector256<uint> xx0, xx1, xx2, xx3;
+                    Vector256<uint> d0, d1, d2, d3;
+                    Vector256<uint> firstInc = Vector256.Create(0, 0, 0, 0, 1u, 0, 0, 0);
+                    Vector256<uint> secondInc = Vector256.Create(2u, 0, 0, 0, 1u, 0, 0, 0);
+
+                    ss0 = Avx2.BroadcastVector128ToVector256(state);
+                    ss1 = Avx2.BroadcastVector128ToVector256(state +  4);
+                    ss2 = Avx2.BroadcastVector128ToVector256(state +  8);
+                    ss3 = Avx2.BroadcastVector128ToVector256(state + 12);
+
+                    do
+                    {
+                        ss3 = Avx2.Add(ss2, firstInc);
+
+                        xx0 = ss0;
+                        xx1 = ss1;
+                        xx2 = ss2;
+                        xx3 = ss3;
+
+                        for (i = 0; i < Rounds; i += 2)
+                        {
+                            xx0 = Avx2.Add(xx0, xx1); xx3 = Avx2.Xor(xx3, xx0); xx3 = Avx2.Xor(Avx2.ShiftLeftLogical(xx3, 16), Avx2.ShiftRightLogical(xx3, 16));
+                            xx2 = Avx2.Add(xx2, xx3); xx1 = Avx2.Xor(xx1, xx2); xx1 = Avx2.Xor(Avx2.ShiftLeftLogical(xx1, 12), Avx2.ShiftRightLogical(xx1, 20));
+                            xx0 = Avx2.Add(xx0, xx1); xx3 = Avx2.Xor(xx3, xx0); xx3 = Avx2.Xor(Avx2.ShiftLeftLogical(xx3,  8), Avx2.ShiftRightLogical(xx3, 24));
+                            xx2 = Avx2.Add(xx2, xx3); xx1 = Avx2.Xor(xx1, xx2); xx1 = Avx2.Xor(Avx2.ShiftLeftLogical(xx1,  7), Avx2.ShiftRightLogical(xx1, 25));
+                            xx1 = Avx2.Shuffle(xx1, 0b00111001);
+                            xx2 = Avx2.Shuffle(xx2, 0b01001110);
+                            xx3 = Avx2.Shuffle(xx3, 0b10010011);
+
+                            xx0 = Avx2.Add(xx0, xx1); xx3 = Avx2.Xor(xx3, xx0); xx3 = Avx2.Xor(Avx2.ShiftLeftLogical(xx3, 16), Avx2.ShiftRightLogical(xx3, 16));
+                            xx2 = Avx2.Add(xx2, xx3); xx1 = Avx2.Xor(xx1, xx2); xx1 = Avx2.Xor(Avx2.ShiftLeftLogical(xx1, 12), Avx2.ShiftRightLogical(xx1, 20));
+                            xx0 = Avx2.Add(xx0, xx1); xx3 = Avx2.Xor(xx3, xx0); xx3 = Avx2.Xor(Avx2.ShiftLeftLogical(xx3,  8), Avx2.ShiftRightLogical(xx3, 24));
+                            xx2 = Avx2.Add(xx2, xx3); xx1 = Avx2.Xor(xx1, xx2); xx1 = Avx2.Xor(Avx2.ShiftLeftLogical(xx1,  7), Avx2.ShiftRightLogical(xx1, 25));
+                            xx1 = Avx2.Shuffle(xx1, 0b10010011);
+                            xx2 = Avx2.Shuffle(xx2, 0b01001110);
+                            xx3 = Avx2.Shuffle(xx3, 0b00111001);
+                        }
+
+                        xx0 = Avx2.Add(xx0, ss0);
+                        xx1 = Avx2.Add(xx1, ss1);
+                        xx2 = Avx2.Add(xx2, ss2);
+                        xx3 = Avx2.Add(xx3, ss3);
+
+                        ss3 = Avx2.Add(ss3, secondInc);
+
+                        d0 = Avx2.Permute2x128(xx0, xx1, 0b00100000);
+                        d1 = Avx2.Permute2x128(xx2, xx3, 0b00100000);
+                        d2 = Avx2.Permute2x128(xx0, xx1, 0b00110001);
+                        d3 = Avx2.Permute2x128(xx2, xx3, 0b00110001);
+
+                        xx0 = Avx2.Xor(xx0, Avx2.LoadVector256((uint*)data)); Avx2.Store((uint*)data, xx0); data += 32;
+                        xx1 = Avx2.Xor(xx1, Avx2.LoadVector256((uint*)data)); Avx2.Store((uint*)data, xx1); data += 32;
+                        xx2 = Avx2.Xor(xx2, Avx2.LoadVector256((uint*)data)); Avx2.Store((uint*)data, xx2); data += 32;
+                        xx3 = Avx2.Xor(xx3, Avx2.LoadVector256((uint*)data)); Avx2.Store((uint*)data, xx3); data += 32;
+
+                        size -= 2 * StateBytesSize;
+                    }
+                    while (size >= 2 * StateBytesSize);
+                }
 
                 Vector128<uint> s0, s1, s2, s3;
                 Vector128<uint> x0, x1, x2, x3;
                 Vector128<uint> inc = Vector128.CreateScalar(1u);
                 
                 s0 = Sse2.LoadVector128(state);
-                s1 = Sse2.LoadVector128(state + 4);
-                s2 = Sse2.LoadVector128(state + 8);
+                s1 = Sse2.LoadVector128(state +  4);
+                s2 = Sse2.LoadVector128(state +  8);
                 s3 = Sse2.LoadVector128(state + 12);
                 
                 while (true)
@@ -91,18 +165,18 @@ namespace AtlasRhythm.Cryptography
                 
                     for (i = 0; i < Rounds; i += 2)
                     {
-                        x0 = Sse2.Add(x0, x1); x3 = Sse2.Xor(x3, x0); x3 = Sse2.Xor(Sse2.ShiftLeftLogical(x3, 16), Sse2.ShiftRightLogical(x3, 16));
-                        x2 = Sse2.Add(x2, x3); x1 = Sse2.Xor(x1, x2); x1 = Sse2.Xor(Sse2.ShiftLeftLogical(x1, 12), Sse2.ShiftRightLogical(x1, 20));
-                        x0 = Sse2.Add(x0, x1); x3 = Sse2.Xor(x3, x0); x3 = Sse2.Xor(Sse2.ShiftLeftLogical(x3,  8), Sse2.ShiftRightLogical(x3, 24));
-                        x2 = Sse2.Add(x2, x3); x1 = Sse2.Xor(x1, x2); x1 = Sse2.Xor(Sse2.ShiftLeftLogical(x1,  7), Sse2.ShiftRightLogical(x1, 25));
+                        x0 = Sse2.Add(x0, x1); x3 = Sse2.Xor(x3, x0); x3 = Sse2.Or(Sse2.ShiftLeftLogical(x3, 16), Sse2.ShiftRightLogical(x3, 16));
+                        x2 = Sse2.Add(x2, x3); x1 = Sse2.Xor(x1, x2); x1 = Sse2.Or(Sse2.ShiftLeftLogical(x1, 12), Sse2.ShiftRightLogical(x1, 20));
+                        x0 = Sse2.Add(x0, x1); x3 = Sse2.Xor(x3, x0); x3 = Sse2.Or(Sse2.ShiftLeftLogical(x3,  8), Sse2.ShiftRightLogical(x3, 24));
+                        x2 = Sse2.Add(x2, x3); x1 = Sse2.Xor(x1, x2); x1 = Sse2.Or(Sse2.ShiftLeftLogical(x1,  7), Sse2.ShiftRightLogical(x1, 25));
                         x1 = Sse2.Shuffle(x1, 0b00111001);
                         x2 = Sse2.Shuffle(x2, 0b01001110);
                         x3 = Sse2.Shuffle(x3, 0b10010011);
 
-                        x0 = Sse2.Add(x0, x1); x3 = Sse2.Xor(x3, x0); x3 = Sse2.Xor(Sse2.ShiftLeftLogical(x3, 16), Sse2.ShiftRightLogical(x3, 16));
-                        x2 = Sse2.Add(x2, x3); x1 = Sse2.Xor(x1, x2); x1 = Sse2.Xor(Sse2.ShiftLeftLogical(x1, 12), Sse2.ShiftRightLogical(x1, 20));
-                        x0 = Sse2.Add(x0, x1); x3 = Sse2.Xor(x3, x0); x3 = Sse2.Xor(Sse2.ShiftLeftLogical(x3,  8), Sse2.ShiftRightLogical(x3, 24));
-                        x2 = Sse2.Add(x2, x3); x1 = Sse2.Xor(x1, x2); x1 = Sse2.Xor(Sse2.ShiftLeftLogical(x1,  7), Sse2.ShiftRightLogical(x1, 25));
+                        x0 = Sse2.Add(x0, x1); x3 = Sse2.Xor(x3, x0); x3 = Sse2.Or(Sse2.ShiftLeftLogical(x3, 16), Sse2.ShiftRightLogical(x3, 16));
+                        x2 = Sse2.Add(x2, x3); x1 = Sse2.Xor(x1, x2); x1 = Sse2.Or(Sse2.ShiftLeftLogical(x1, 12), Sse2.ShiftRightLogical(x1, 20));
+                        x0 = Sse2.Add(x0, x1); x3 = Sse2.Xor(x3, x0); x3 = Sse2.Or(Sse2.ShiftLeftLogical(x3,  8), Sse2.ShiftRightLogical(x3, 24));
+                        x2 = Sse2.Add(x2, x3); x1 = Sse2.Xor(x1, x2); x1 = Sse2.Or(Sse2.ShiftLeftLogical(x1,  7), Sse2.ShiftRightLogical(x1, 25));
                         x1 = Sse2.Shuffle(x1, 0b10010011);
                         x2 = Sse2.Shuffle(x2, 0b01001110);
                         x3 = Sse2.Shuffle(x3, 0b00111001);
@@ -115,10 +189,10 @@ namespace AtlasRhythm.Cryptography
                     
                     s3 = Sse2.Add(s3, inc);
                     
-                    x0 = Sse2.Xor(x0, Sse2.LoadVector128((uint*)data)); Sse2.Store((uint*)data, x0); data += sizeof(uint) * 4;
-                    x1 = Sse2.Xor(x1, Sse2.LoadVector128((uint*)data)); Sse2.Store((uint*)data, x1); data += sizeof(uint) * 4;
-                    x2 = Sse2.Xor(x2, Sse2.LoadVector128((uint*)data)); Sse2.Store((uint*)data, x2); data += sizeof(uint) * 4;
-                    x3 = Sse2.Xor(x3, Sse2.LoadVector128((uint*)data)); Sse2.Store((uint*)data, x3); data += sizeof(uint) * 4;
+                    x0 = Sse2.Xor(x0, Sse2.LoadVector128((uint*)data)); Sse2.Store((uint*)data, x0); data += 16;
+                    x1 = Sse2.Xor(x1, Sse2.LoadVector128((uint*)data)); Sse2.Store((uint*)data, x1); data += 16;
+                    x2 = Sse2.Xor(x2, Sse2.LoadVector128((uint*)data)); Sse2.Store((uint*)data, x2); data += 16;
+                    x3 = Sse2.Xor(x3, Sse2.LoadVector128((uint*)data)); Sse2.Store((uint*)data, x3); data += 16;
                     
                     if (size <= StateBytesSize)
                     {
@@ -134,12 +208,10 @@ namespace AtlasRhythm.Cryptography
                     
                     size -= StateBytesSize;
                 }
-
             }
             else
             {
 #endif
-
                 uint s0, s1, s2, s3, s4, s5, s6, s7, s8, s9, s10, s11, s12, s13, s14, s15;
                 uint x0, x1, x2, x3, x4, x5, x6, x7, x8, x9, x10, x11, x12, x13, x14, x15;
                 
@@ -248,7 +320,6 @@ namespace AtlasRhythm.Cryptography
                 
                     size -= StateBytesSize;
                 }
-
 #if NET5_0 || NETCOREAPP3_1
             }
 #endif

@@ -5,19 +5,11 @@ jobs:
     tests:
         name: Tests
         runs-on: ubuntu-latest
-        strategy:
-            matrix:
-                dotnet: ["5.0.x", "2.2.x"]
-                include:
-                    - dotnet: "5.0.x"
-                      tfm: net5.0
-                    - dotnet: "2.2.x"
-                      tfm: netcoreapp2.1
 
         steps:
             - uses: actions/checkout@v2
             - uses: actions/setup-dotnet@v1
               with:
-                  dotnet-version: ${{ matrix.dotnet }}
-            - run: dotnet test -f ${{ matrix.tfm }}
+                  dotnet-version: 5.0.x
+            - run: dotnet test
               working-directory: Chacha20Poly1305.Tests

@@ -6,9 +6,14 @@ namespace AtlasRhythm.Cryptography.Tests
     [TestClass]
     public class Chacha20Poly1305_Decrypt
     {
-        [TestMethod]
-        public void Decrypt_Exact()
+        [DataTestMethod]
+        [DataRow(true, true)]
+        [DataRow(true, false)]
+        [DataRow(false, false)]
+        public void Decrypt_Exact(bool sse2, bool avx2)
         {
+            TestHelpers.SetEnv(sse2, avx2);
+
             var key = TestData.Key;
             var nonce = TestData.Nonce;
             var ciphertext = TestData.Ciphertext;
@@ -17,15 +22,22 @@ namespace AtlasRhythm.Cryptography.Tests
 
             var plaintext = new byte[ciphertext.Length];
 
-            using (var aead = new Chacha20Poly1305(key))
-                aead.Decrypt(nonce, ciphertext, tag, plaintext, associatedData);
+            using var aead = new Chacha20Poly1305(key);
+            aead.Decrypt(nonce, ciphertext, tag, plaintext, associatedData);
 
             CollectionAssert.AreEqual(TestData.Plaintext, plaintext);
+
+            TestHelpers.ClearEnv();
         }
 
-        [TestMethod]
-        public void Decrypt_DifferentKey()
+        [DataTestMethod]
+        [DataRow(true, true)]
+        [DataRow(true, false)]
+        [DataRow(false, false)]
+        public void Decrypt_DifferentKey(bool sse2, bool avx2)
         {
+            TestHelpers.SetEnv(sse2, avx2);
+
             var key = TestData.Key;
             var nonce = TestData.Nonce;
             var ciphertext = TestData.Ciphertext;
@@ -38,17 +50,24 @@ namespace AtlasRhythm.Cryptography.Tests
 
             void action()
             {
-                using (var aead = new Chacha20Poly1305(key))
-                    aead.Decrypt(nonce, ciphertext, tag, plaintext, associatedData);
+                using var aead = new Chacha20Poly1305(key);
+                aead.Decrypt(nonce, ciphertext, tag, plaintext, associatedData);
             }
 
             var ex = Assert.ThrowsException<CryptographicException>(action);
             StringAssert.Contains(ex.Message.ToLower(), "tag");
+
+            TestHelpers.ClearEnv();
         }
 
-        [TestMethod]
-        public void Decrypt_DifferentNonce()
+        [DataTestMethod]
+        [DataRow(true, true)]
+        [DataRow(true, false)]
+        [DataRow(false, false)]
+        public void Decrypt_DifferentNonce(bool sse2, bool avx2)
         {
+            TestHelpers.SetEnv(sse2, avx2);
+
             var key = TestData.Key;
             var nonce = TestData.Nonce;
             var ciphertext = TestData.Ciphertext;
@@ -61,17 +80,24 @@ namespace AtlasRhythm.Cryptography.Tests
 
             void action()
             {
-                using (var aead = new Chacha20Poly1305(key))
-                    aead.Decrypt(nonce, ciphertext, tag, plaintext, associatedData);
+                using var aead = new Chacha20Poly1305(key);
+                aead.Decrypt(nonce, ciphertext, tag, plaintext, associatedData);
             }
 
             var ex = Assert.ThrowsException<CryptographicException>(action);
             StringAssert.Contains(ex.Message.ToLower(), "tag");
+
+            TestHelpers.ClearEnv();
         }
 
-        [TestMethod]
-        public void Decrypt_DifferentCiphertext()
+        [DataTestMethod]
+        [DataRow(true, true)]
+        [DataRow(true, false)]
+        [DataRow(false, false)]
+        public void Decrypt_DifferentCiphertext(bool sse2, bool avx2)
         {
+            TestHelpers.SetEnv(sse2, avx2);
+
             var key = TestData.Key;
             var nonce = TestData.Nonce;
             var ciphertext = TestData.Ciphertext;
@@ -84,17 +110,24 @@ namespace AtlasRhythm.Cryptography.Tests
 
             void action()
             {
-                using (var aead = new Chacha20Poly1305(key))
-                    aead.Decrypt(nonce, ciphertext, tag, plaintext, associatedData);
+                using var aead = new Chacha20Poly1305(key);
+                aead.Decrypt(nonce, ciphertext, tag, plaintext, associatedData);
             }
 
             var ex = Assert.ThrowsException<CryptographicException>(action);
             StringAssert.Contains(ex.Message.ToLower(), "tag");
+
+            TestHelpers.ClearEnv();
         }
 
-        [TestMethod]
-        public void Decrypt_DifferentTag()
+        [DataTestMethod]
+        [DataRow(true, true)]
+        [DataRow(true, false)]
+        [DataRow(false, false)]
+        public void Decrypt_DifferentTag(bool sse2, bool avx2)
         {
+            TestHelpers.SetEnv(sse2, avx2);
+
             var key = TestData.Key;
             var nonce = TestData.Nonce;
             var ciphertext = TestData.Ciphertext;
@@ -107,17 +140,24 @@ namespace AtlasRhythm.Cryptography.Tests
 
             void action()
             {
-                using (var aead = new Chacha20Poly1305(key))
-                    aead.Decrypt(nonce, ciphertext, tag, plaintext, associatedData);
+                using var aead = new Chacha20Poly1305(key);
+                aead.Decrypt(nonce, ciphertext, tag, plaintext, associatedData);
             }
 
             var ex = Assert.ThrowsException<CryptographicException>(action);
             StringAssert.Contains(ex.Message.ToLower(), "tag");
+
+            TestHelpers.ClearEnv();
         }
 
-        [TestMethod]
-        public void Decrypt_DifferentAssociatedData()
+        [DataTestMethod]
+        [DataRow(true, true)]
+        [DataRow(true, false)]
+        [DataRow(false, false)]
+        public void Decrypt_DifferentAssociatedData(bool sse2, bool avx2)
         {
+            TestHelpers.SetEnv(sse2, avx2);
+
             var key = TestData.Key;
             var nonce = TestData.Nonce;
             var ciphertext = TestData.Ciphertext;
@@ -130,17 +170,24 @@ namespace AtlasRhythm.Cryptography.Tests
 
             void action()
             {
-                using (var aead = new Chacha20Poly1305(key))
-                    aead.Decrypt(nonce, ciphertext, tag, plaintext, associatedData);
+                using var aead = new Chacha20Poly1305(key);
+                aead.Decrypt(nonce, ciphertext, tag, plaintext, associatedData);
             }
 
             var ex = Assert.ThrowsException<CryptographicException>(action);
             StringAssert.Contains(ex.Message.ToLower(), "tag");
+
+            TestHelpers.ClearEnv();
         }
 
-        [TestMethod]
-        public void Decrypt_NoAssociatedData()
+        [DataTestMethod]
+        [DataRow(true, true)]
+        [DataRow(true, false)]
+        [DataRow(false, false)]
+        public void Decrypt_NoAssociatedData(bool sse2, bool avx2)
         {
+            TestHelpers.SetEnv(sse2, avx2);
+
             var key = TestData.Key;
             var nonce = TestData.Nonce;
             var ciphertext = TestData.Ciphertext;
@@ -150,12 +197,14 @@ namespace AtlasRhythm.Cryptography.Tests
 
             void action()
             {
-                using (var aead = new Chacha20Poly1305(key))
-                    aead.Decrypt(nonce, ciphertext, tag, plaintext);
+                using var aead = new Chacha20Poly1305(key);
+                aead.Decrypt(nonce, ciphertext, tag, plaintext);
             }
 
             var ex = Assert.ThrowsException<CryptographicException>(action);
             StringAssert.Contains(ex.Message.ToLower(), "tag");
+
+            TestHelpers.ClearEnv();
         }
     }
 }
