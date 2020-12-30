@@ -14,9 +14,9 @@
 
 using System.Runtime.CompilerServices;
 
-namespace AtlasRhythm.Cryptography
+namespace AtlasRhythm.Cryptography.Macs
 {
-    internal static unsafe class Poly1305
+    internal static unsafe class Poly1305Core
     {
         public const int KeySize = 256 / 8;
         public const int TagSize = 128 / 8;

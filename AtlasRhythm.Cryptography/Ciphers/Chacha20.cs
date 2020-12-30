@@ -23,9 +23,9 @@ using System.Runtime.Intrinsics.X86;
 using System;
 #endif
 
-namespace AtlasRhythm.Cryptography
+namespace AtlasRhythm.Cryptography.Ciphers
 {
-    internal static unsafe class Chacha20
+    internal static unsafe class Chacha20Core
     {
         public const int KeySize = 256 / 8;
         public const int NonceSize = 96 / 8;
@@ -68,13 +68,15 @@ namespace AtlasRhythm.Cryptography
 
 #if NET5_0 || NETCOREAPP3_1
 #if DEBUG
-            if (string.IsNullOrEmpty(Environment.GetEnvironmentVariable(Chacha20Poly1305.NoSse2Var)) && Sse2.IsSupported)
+            if (string.IsNullOrEmpty(Environment.GetEnvironmentVariable(Debug.NoSse2Var)) && Sse2.IsSupported)
 #else
             if (Sse2.IsSupported)
 #endif
             {
+                uint c = 0;
+
 #if DEBUG
-                if (string.IsNullOrEmpty(Environment.GetEnvironmentVariable(Chacha20Poly1305.NoAvx2Var)) && Avx2.IsSupported && size >= 2 * StateBytesSize)
+                if (string.IsNullOrEmpty(Environment.GetEnvironmentVariable(Debug.NoAvx2Var)) && Avx2.IsSupported && size >= 2 * StateBytesSize)
 #else
                 if (Avx2.IsSupported && size >= 2 * StateBytesSize)
 #endif
@@ -92,7 +94,7 @@ namespace AtlasRhythm.Cryptography
 
                     do
                     {
-                        ss3 = Avx2.Add(ss2, firstInc);
+                        ss3 = Avx2.Add(ss3, firstInc);
 
                         xx0 = ss0;
                         xx1 = ss1;
@@ -124,16 +126,17 @@ namespace AtlasRhythm.Cryptography
                         xx3 = Avx2.Add(xx3, ss3);
 
                         ss3 = Avx2.Add(ss3, secondInc);
+                        c += 2;
 
                         d0 = Avx2.Permute2x128(xx0, xx1, 0b00100000);
                         d1 = Avx2.Permute2x128(xx2, xx3, 0b00100000);
                         d2 = Avx2.Permute2x128(xx0, xx1, 0b00110001);
                         d3 = Avx2.Permute2x128(xx2, xx3, 0b00110001);
 
-                        xx0 = Avx2.Xor(xx0, Avx2.LoadVector256((uint*)data)); Avx2.Store((uint*)data, xx0); data += 32;
-                        xx1 = Avx2.Xor(xx1, Avx2.LoadVector256((uint*)data)); Avx2.Store((uint*)data, xx1); data += 32;
-                        xx2 = Avx2.Xor(xx2, Avx2.LoadVector256((uint*)data)); Avx2.Store((uint*)data, xx2); data += 32;
-                        xx3 = Avx2.Xor(xx3, Avx2.LoadVector256((uint*)data)); Avx2.Store((uint*)data, xx3); data += 32;
+                        d0 = Avx2.Xor(d0, Avx2.LoadVector256((uint*)data)); Avx2.Store((uint*)data, d0); data += 32;
+                        d1 = Avx2.Xor(d1, Avx2.LoadVector256((uint*)data)); Avx2.Store((uint*)data, d1); data += 32;
+                        d2 = Avx2.Xor(d2, Avx2.LoadVector256((uint*)data)); Avx2.Store((uint*)data, d2); data += 32;
+                        d3 = Avx2.Xor(d3, Avx2.LoadVector256((uint*)data)); Avx2.Store((uint*)data, d3); data += 32;
 
                         size -= 2 * StateBytesSize;
                     }
@@ -148,6 +151,8 @@ namespace AtlasRhythm.Cryptography
                 s1 = Sse2.LoadVector128(state +  4);
                 s2 = Sse2.LoadVector128(state +  8);
                 s3 = Sse2.LoadVector128(state + 12);
+
+                s3 = Sse2.Add(s3, Vector128.CreateScalar(c));
                 
                 while (true)
                 {

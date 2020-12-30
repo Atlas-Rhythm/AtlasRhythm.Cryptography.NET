@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30717.126
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Chacha20Poly1305", "Chacha20Poly1305\Chacha20Poly1305.csproj", "{5DD352C4-A3B8-44DA-A9A1-074A6C0248DD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AtlasRhythm.Cryptography", "AtlasRhythm.Cryptography\AtlasRhythm.Cryptography.csproj", "{5DD352C4-A3B8-44DA-A9A1-074A6C0248DD}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Misc", "Misc", "{78692B44-0E44-4294-9D49-BDE7F0F196D7}"
 	ProjectSection(SolutionItems) = preProject
@@ -12,9 +12,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Misc", "Misc", "{78692B44-0
 		README.md = README.md
 	EndProjectSection
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Chacha20Poly1305.Tests", "Chacha20Poly1305.Tests\Chacha20Poly1305.Tests.csproj", "{02B5524A-C954-46FA-B333-99EDB418D42A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AtlasRhythm.Cryptography.Tests", "AtlasRhythm.Cryptography.Tests\AtlasRhythm.Cryptography.Tests.csproj", "{02B5524A-C954-46FA-B333-99EDB418D42A}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Chacha20Poly1305.Benchmarks", "Chacha20Poly1305.Benchmarks\Chacha20Poly1305.Benchmarks.csproj", "{4D826915-2629-4FBD-A343-96A62E9B05F6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AtlasRhythm.Cryptography.Benchmarks", "AtlasRhythm.Cryptography.Benchmarks\AtlasRhythm.Cryptography.Benchmarks.csproj", "{4D826915-2629-4FBD-A343-96A62E9B05F6}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "CI", "CI", "{CFBAD6A6-28A5-4511-86CD-8865317956EB}"
 	ProjectSection(SolutionItems) = preProject

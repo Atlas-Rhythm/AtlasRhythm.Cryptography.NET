@@ -13,6 +13,11 @@
 // limitations under the License.
 
 using System.Runtime.CompilerServices;
+using System.Security.Cryptography;
+
+#if (NET5_0 || NETCOREAPP3_1) && DEBUG
+using System.Runtime.Intrinsics;
+#endif
 
 namespace AtlasRhythm.Cryptography
 {
@@ -23,6 +28,18 @@ namespace AtlasRhythm.Cryptography
 #endif
         public static uint LeftRoll(this uint lhs, int rhs) =>
             (lhs << rhs) | (lhs >> (sizeof(uint) * 8 - rhs));
+
+        public static bool IsLegalSize(this int size, KeySizes legalSizes)
+        {
+            if (legalSizes.SkipSize == 0 && legalSizes.MinSize == size) return true;
+            else if (size >= legalSizes.MinSize && size <= legalSizes.MaxSize)
+            {
+                int delta = size - legalSizes.MinSize;
+                if (delta % legalSizes.SkipSize == 0) return true;
+            }
+
+            return false;
+        }
     }
 
     internal static unsafe class Memory
@@ -62,4 +79,28 @@ namespace AtlasRhythm.Cryptography
             u8[7] = (byte) (u64 >> 56);
         }
     }
+
+#if DEBUG
+    public static class Debug
+    {
+        public const string NoSse2Var = "NO_SSE2";
+        public const string NoAvx2Var = "NO_AVX2";
+
+#if NET5_0 || NETCOREAPP3_1
+        internal static void PrintVector(Vector128<uint> v)
+        {
+            for (int i = 0; i < 4; ++i)
+                System.Diagnostics.Debug.Write($"{v.GetElement(i):x8} ");
+            System.Diagnostics.Debug.WriteLine("");
+        }
+
+        internal static void PrintVector(Vector256<uint> v)
+        {
+            for (int i = 0; i < 8; ++i)
+                System.Diagnostics.Debug.Write($"{v.GetElement(i):x8} ");
+            System.Diagnostics.Debug.WriteLine("");
+        }
+#endif
+    }
+#endif
 }
