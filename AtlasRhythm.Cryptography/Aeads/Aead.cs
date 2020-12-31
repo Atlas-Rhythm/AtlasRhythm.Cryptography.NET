@@ -3,6 +3,9 @@ using System.Security.Cryptography;
 
 namespace AtlasRhythm.Cryptography.Aeads
 {
+    /// <summary>
+    /// Represents the abstract class from which all implementations of Authenticated Encryption with Associated Data (AEAD) must derive.
+    /// </summary>
     public abstract class Aead
     {
         /// <summary>

@@ -1,3 +1,7 @@
+# Sample benchmark results
+
+## ChaCha20-Poly1305
+
 ```ini
 
 BenchmarkDotNet=v0.12.1, OS=Windows 10.0.17763.1637 (1809/October2018Update/Redstone5)
