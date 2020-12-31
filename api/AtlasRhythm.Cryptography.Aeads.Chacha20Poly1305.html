@@ -1,0 +1,638 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Class Chacha20Poly1305
+   </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Class Chacha20Poly1305
+   ">
+    <meta name="generator" content="docfx 2.56.6.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="AtlasRhythm.Cryptography.Aeads.Chacha20Poly1305">
+  
+  
+  <h1 id="AtlasRhythm_Cryptography_Aeads_Chacha20Poly1305" data-uid="AtlasRhythm.Cryptography.Aeads.Chacha20Poly1305" class="text-break">Class Chacha20Poly1305
+  </h1>
+  <div class="markdown level0 summary"><p>Represents a key to be used with ChaCha20 and Poly1305 for Authenticated Encryption with Associated Data.</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.object">Object</a></div>
+    <div class="level1"><a class="xref" href="AtlasRhythm.Cryptography.Aeads.Aead.html">Aead</a></div>
+    <div class="level2"><span class="xref">Chacha20Poly1305</span></div>
+  </div>
+  <div classs="implements">
+    <h5>Implements</h5>
+    <div><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.idisposable">IDisposable</a></div>
+  </div>
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <a class="xref" href="AtlasRhythm.Cryptography.Aeads.Aead.html#AtlasRhythm_Cryptography_Aeads_Aead_Encrypt_System_Byte___System_Byte___System_Byte___System_Byte___System_Byte___">Aead.Encrypt(Byte[], Byte[], Byte[], Byte[], Byte[])</a>
+    </div>
+    <div>
+      <a class="xref" href="AtlasRhythm.Cryptography.Aeads.Aead.html#AtlasRhythm_Cryptography_Aeads_Aead_Decrypt_System_Byte___System_Byte___System_Byte___System_Byte___System_Byte___">Aead.Decrypt(Byte[], Byte[], Byte[], Byte[], Byte[])</a>
+    </div>
+    <div>
+      <a class="xref" href="AtlasRhythm.Cryptography.Aeads.Aead.html#AtlasRhythm_Cryptography_Aeads_Aead_Encrypt_System_Byte___System_Byte___System_Byte___">Aead.Encrypt(Byte[], Byte[], Byte[])</a>
+    </div>
+    <div>
+      <a class="xref" href="AtlasRhythm.Cryptography.Aeads.Aead.html#AtlasRhythm_Cryptography_Aeads_Aead_Decrypt_System_Byte___System_Byte___System_Byte___">Aead.Decrypt(Byte[], Byte[], Byte[])</a>
+    </div>
+    <div>
+      <a class="xref" href="AtlasRhythm.Cryptography.Aeads.Aead.html#AtlasRhythm_Cryptography_Aeads_Aead_Encrypt_System_ReadOnlySpan_System_Byte__System_ReadOnlySpan_System_Byte__System_Span_System_Byte__System_Span_System_Byte__System_ReadOnlySpan_System_Byte__">Aead.Encrypt(ReadOnlySpan&lt;Byte&gt;, ReadOnlySpan&lt;Byte&gt;, Span&lt;Byte&gt;, Span&lt;Byte&gt;, ReadOnlySpan&lt;Byte&gt;)</a>
+    </div>
+    <div>
+      <a class="xref" href="AtlasRhythm.Cryptography.Aeads.Aead.html#AtlasRhythm_Cryptography_Aeads_Aead_Decrypt_System_ReadOnlySpan_System_Byte__System_ReadOnlySpan_System_Byte__System_ReadOnlySpan_System_Byte__System_Span_System_Byte__System_ReadOnlySpan_System_Byte__">Aead.Decrypt(ReadOnlySpan&lt;Byte&gt;, ReadOnlySpan&lt;Byte&gt;, ReadOnlySpan&lt;Byte&gt;, Span&lt;Byte&gt;, ReadOnlySpan&lt;Byte&gt;)</a>
+    </div>
+    <div>
+      <a class="xref" href="AtlasRhythm.Cryptography.Aeads.Aead.html#AtlasRhythm_Cryptography_Aeads_Aead_Encrypt_System_ReadOnlySpan_System_Byte__System_ReadOnlySpan_System_Byte__System_ReadOnlySpan_System_Byte__">Aead.Encrypt(ReadOnlySpan&lt;Byte&gt;, ReadOnlySpan&lt;Byte&gt;, ReadOnlySpan&lt;Byte&gt;)</a>
+    </div>
+    <div>
+      <a class="xref" href="AtlasRhythm.Cryptography.Aeads.Aead.html#AtlasRhythm_Cryptography_Aeads_Aead_Decrypt_System_ReadOnlySpan_System_Byte__System_ReadOnlySpan_System_Byte__System_ReadOnlySpan_System_Byte__">Aead.Decrypt(ReadOnlySpan&lt;Byte&gt;, ReadOnlySpan&lt;Byte&gt;, ReadOnlySpan&lt;Byte&gt;)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.object.equals#System_Object_Equals_System_Object_">Object.Equals(Object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.object.equals#System_Object_Equals_System_Object_System_Object_">Object.Equals(Object, Object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.object.gethashcode#System_Object_GetHashCode">Object.GetHashCode()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.object.gettype#System_Object_GetType">Object.GetType()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.object.memberwiseclone#System_Object_MemberwiseClone">Object.MemberwiseClone()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.object.referenceequals#System_Object_ReferenceEquals_System_Object_System_Object_">Object.ReferenceEquals(Object, Object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.object.tostring#System_Object_ToString">Object.ToString()</a>
+    </div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="AtlasRhythm.Cryptography.Aeads.html">AtlasRhythm.Cryptography.Aeads</a></h6>
+  <h6><strong>Assembly</strong>: AtlasRhythm.Cryptography.dll</h6>
+  <h5 id="AtlasRhythm_Cryptography_Aeads_Chacha20Poly1305_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public sealed class Chacha20Poly1305 : Aead, IDisposable</code></pre>
+  </div>
+  <h3 id="constructors">Constructors
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Atlas-Rhythm/AtlasRhythm.Cryptography.NET/new/master/apiSpec/new?filename=AtlasRhythm_Cryptography_Aeads_Chacha20Poly1305__ctor_System_Byte___.md&amp;value=---%0Auid%3A%20AtlasRhythm.Cryptography.Aeads.Chacha20Poly1305.%23ctor(System.Byte%5B%5D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Atlas-Rhythm/AtlasRhythm.Cryptography.NET/blob/master/AtlasRhythm.Cryptography/Aeads/Chacha20Poly1305.cs/#L52">View Source</a>
+  </span>
+  <a id="AtlasRhythm_Cryptography_Aeads_Chacha20Poly1305__ctor_" data-uid="AtlasRhythm.Cryptography.Aeads.Chacha20Poly1305.#ctor*"></a>
+  <h4 id="AtlasRhythm_Cryptography_Aeads_Chacha20Poly1305__ctor_System_Byte___" data-uid="AtlasRhythm.Cryptography.Aeads.Chacha20Poly1305.#ctor(System.Byte[])">Chacha20Poly1305(Byte[])</h4>
+  <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="AtlasRhythm.Cryptography.Aeads.Chacha20Poly1305.html">Chacha20Poly1305</a> class with a provided key.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Chacha20Poly1305(byte[] key)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.byte">Byte</a>[]</td>
+        <td><span class="parametername">key</span></td>
+        <td><p>The secret key to use for this instance.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.argumentnullexception">ArgumentNullException</a></td>
+        <td><p>The <code>key</code> parameter is <code>null</code>.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.security.cryptography.cryptographicexception">CryptographicException</a></td>
+        <td><p>The key parameter length is other than 32 bytes (256 bits).</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="fields">Fields
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Atlas-Rhythm/AtlasRhythm.Cryptography.NET/new/master/apiSpec/new?filename=AtlasRhythm_Cryptography_Aeads_Chacha20Poly1305_KeySize.md&amp;value=---%0Auid%3A%20AtlasRhythm.Cryptography.Aeads.Chacha20Poly1305.KeySize%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Atlas-Rhythm/AtlasRhythm.Cryptography.NET/blob/master/AtlasRhythm.Cryptography/Aeads/Chacha20Poly1305.cs/#L30">View Source</a>
+  </span>
+  <h4 id="AtlasRhythm_Cryptography_Aeads_Chacha20Poly1305_KeySize" data-uid="AtlasRhythm.Cryptography.Aeads.Chacha20Poly1305.KeySize">KeySize</h4>
+  <div class="markdown level1 summary"><p>Key size, in bytes, supported by this instance.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const int KeySize = 32</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.int32">Int32</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Atlas-Rhythm/AtlasRhythm.Cryptography.NET/new/master/apiSpec/new?filename=AtlasRhythm_Cryptography_Aeads_Chacha20Poly1305_NonceSize.md&amp;value=---%0Auid%3A%20AtlasRhythm.Cryptography.Aeads.Chacha20Poly1305.NonceSize%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Atlas-Rhythm/AtlasRhythm.Cryptography.NET/blob/master/AtlasRhythm.Cryptography/Aeads/Chacha20Poly1305.cs/#L34">View Source</a>
+  </span>
+  <h4 id="AtlasRhythm_Cryptography_Aeads_Chacha20Poly1305_NonceSize" data-uid="AtlasRhythm.Cryptography.Aeads.Chacha20Poly1305.NonceSize">NonceSize</h4>
+  <div class="markdown level1 summary"><p>Nonce size, in bytes, supported by this instance.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const int NonceSize = 12</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.int32">Int32</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Atlas-Rhythm/AtlasRhythm.Cryptography.NET/new/master/apiSpec/new?filename=AtlasRhythm_Cryptography_Aeads_Chacha20Poly1305_TagSize.md&amp;value=---%0Auid%3A%20AtlasRhythm.Cryptography.Aeads.Chacha20Poly1305.TagSize%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Atlas-Rhythm/AtlasRhythm.Cryptography.NET/blob/master/AtlasRhythm.Cryptography/Aeads/Chacha20Poly1305.cs/#L38">View Source</a>
+  </span>
+  <h4 id="AtlasRhythm_Cryptography_Aeads_Chacha20Poly1305_TagSize" data-uid="AtlasRhythm.Cryptography.Aeads.Chacha20Poly1305.TagSize">TagSize</h4>
+  <div class="markdown level1 summary"><p>Tag size, in bytes, supported by this instance.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const int TagSize = 16</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.int32">Int32</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="properties">Properties
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Atlas-Rhythm/AtlasRhythm.Cryptography.NET/new/master/apiSpec/new?filename=AtlasRhythm_Cryptography_Aeads_Chacha20Poly1305_Key.md&amp;value=---%0Auid%3A%20AtlasRhythm.Cryptography.Aeads.Chacha20Poly1305.Key%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Atlas-Rhythm/AtlasRhythm.Cryptography.NET/blob/master/AtlasRhythm.Cryptography/Aeads/Chacha20Poly1305.cs/#L44">View Source</a>
+  </span>
+  <a id="AtlasRhythm_Cryptography_Aeads_Chacha20Poly1305_Key_" data-uid="AtlasRhythm.Cryptography.Aeads.Chacha20Poly1305.Key*"></a>
+  <h4 id="AtlasRhythm_Cryptography_Aeads_Chacha20Poly1305_Key" data-uid="AtlasRhythm.Cryptography.Aeads.Chacha20Poly1305.Key">Key</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected override byte[] Key { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.byte">Byte</a>[]</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><a class="xref" href="AtlasRhythm.Cryptography.Aeads.Aead.html#AtlasRhythm_Cryptography_Aeads_Aead_Key">Aead.Key</a></div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Atlas-Rhythm/AtlasRhythm.Cryptography.NET/new/master/apiSpec/new?filename=AtlasRhythm_Cryptography_Aeads_Chacha20Poly1305_KeyByteSizes.md&amp;value=---%0Auid%3A%20AtlasRhythm.Cryptography.Aeads.Chacha20Poly1305.KeyByteSizes%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Atlas-Rhythm/AtlasRhythm.Cryptography.NET/blob/master/AtlasRhythm.Cryptography/Aeads/Chacha20Poly1305.cs/#L40">View Source</a>
+  </span>
+  <a id="AtlasRhythm_Cryptography_Aeads_Chacha20Poly1305_KeyByteSizes_" data-uid="AtlasRhythm.Cryptography.Aeads.Chacha20Poly1305.KeyByteSizes*"></a>
+  <h4 id="AtlasRhythm_Cryptography_Aeads_Chacha20Poly1305_KeyByteSizes" data-uid="AtlasRhythm.Cryptography.Aeads.Chacha20Poly1305.KeyByteSizes">KeyByteSizes</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override KeySizes KeyByteSizes { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.security.cryptography.keysizes">KeySizes</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><a class="xref" href="AtlasRhythm.Cryptography.Aeads.Aead.html#AtlasRhythm_Cryptography_Aeads_Aead_KeyByteSizes">Aead.KeyByteSizes</a></div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Atlas-Rhythm/AtlasRhythm.Cryptography.NET/new/master/apiSpec/new?filename=AtlasRhythm_Cryptography_Aeads_Chacha20Poly1305_NonceByteSizes.md&amp;value=---%0Auid%3A%20AtlasRhythm.Cryptography.Aeads.Chacha20Poly1305.NonceByteSizes%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Atlas-Rhythm/AtlasRhythm.Cryptography.NET/blob/master/AtlasRhythm.Cryptography/Aeads/Chacha20Poly1305.cs/#L41">View Source</a>
+  </span>
+  <a id="AtlasRhythm_Cryptography_Aeads_Chacha20Poly1305_NonceByteSizes_" data-uid="AtlasRhythm.Cryptography.Aeads.Chacha20Poly1305.NonceByteSizes*"></a>
+  <h4 id="AtlasRhythm_Cryptography_Aeads_Chacha20Poly1305_NonceByteSizes" data-uid="AtlasRhythm.Cryptography.Aeads.Chacha20Poly1305.NonceByteSizes">NonceByteSizes</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override KeySizes NonceByteSizes { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.security.cryptography.keysizes">KeySizes</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><a class="xref" href="AtlasRhythm.Cryptography.Aeads.Aead.html#AtlasRhythm_Cryptography_Aeads_Aead_NonceByteSizes">Aead.NonceByteSizes</a></div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Atlas-Rhythm/AtlasRhythm.Cryptography.NET/new/master/apiSpec/new?filename=AtlasRhythm_Cryptography_Aeads_Chacha20Poly1305_TagByteSizes.md&amp;value=---%0Auid%3A%20AtlasRhythm.Cryptography.Aeads.Chacha20Poly1305.TagByteSizes%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Atlas-Rhythm/AtlasRhythm.Cryptography.NET/blob/master/AtlasRhythm.Cryptography/Aeads/Chacha20Poly1305.cs/#L42">View Source</a>
+  </span>
+  <a id="AtlasRhythm_Cryptography_Aeads_Chacha20Poly1305_TagByteSizes_" data-uid="AtlasRhythm.Cryptography.Aeads.Chacha20Poly1305.TagByteSizes*"></a>
+  <h4 id="AtlasRhythm_Cryptography_Aeads_Chacha20Poly1305_TagByteSizes" data-uid="AtlasRhythm.Cryptography.Aeads.Chacha20Poly1305.TagByteSizes">TagByteSizes</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override KeySizes TagByteSizes { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.security.cryptography.keysizes">KeySizes</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><a class="xref" href="AtlasRhythm.Cryptography.Aeads.Aead.html#AtlasRhythm_Cryptography_Aeads_Aead_TagByteSizes">Aead.TagByteSizes</a></div>
+  <h3 id="methods">Methods
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Atlas-Rhythm/AtlasRhythm.Cryptography.NET/new/master/apiSpec/new?filename=AtlasRhythm_Cryptography_Aeads_Chacha20Poly1305_DecryptCore_System_Byte__System_Byte__System_Byte__System_Int32_System_Byte__System_Byte__System_Int32_System_Byte__.md&amp;value=---%0Auid%3A%20AtlasRhythm.Cryptography.Aeads.Chacha20Poly1305.DecryptCore(System.Byte*%2CSystem.Byte*%2CSystem.Byte*%2CSystem.Int32%2CSystem.Byte*%2CSystem.Byte*%2CSystem.Int32%2CSystem.Byte*)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Atlas-Rhythm/AtlasRhythm.Cryptography.NET/blob/master/AtlasRhythm.Cryptography/Aeads/Chacha20Poly1305.cs/#L83">View Source</a>
+  </span>
+  <a id="AtlasRhythm_Cryptography_Aeads_Chacha20Poly1305_DecryptCore_" data-uid="AtlasRhythm.Cryptography.Aeads.Chacha20Poly1305.DecryptCore*"></a>
+  <h4 id="AtlasRhythm_Cryptography_Aeads_Chacha20Poly1305_DecryptCore_System_Byte__System_Byte__System_Byte__System_Int32_System_Byte__System_Byte__System_Int32_System_Byte__" data-uid="AtlasRhythm.Cryptography.Aeads.Chacha20Poly1305.DecryptCore(System.Byte*,System.Byte*,System.Byte*,System.Int32,System.Byte*,System.Byte*,System.Int32,System.Byte*)">DecryptCore(Byte*, Byte*, Byte*, Int32, Byte*, Byte*, Int32, Byte*)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected override bool DecryptCore(byte *key, byte *nonce, byte *ciphertext, int size, byte *tag, byte *associatedData, int associatedDataSize, byte *plaintext)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.byte">Byte</a>*</td>
+        <td><span class="parametername">key</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.byte">Byte</a>*</td>
+        <td><span class="parametername">nonce</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.byte">Byte</a>*</td>
+        <td><span class="parametername">ciphertext</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.int32">Int32</a></td>
+        <td><span class="parametername">size</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.byte">Byte</a>*</td>
+        <td><span class="parametername">tag</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.byte">Byte</a>*</td>
+        <td><span class="parametername">associatedData</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.int32">Int32</a></td>
+        <td><span class="parametername">associatedDataSize</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.byte">Byte</a>*</td>
+        <td><span class="parametername">plaintext</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.boolean">Boolean</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><a class="xref" href="AtlasRhythm.Cryptography.Aeads.Aead.html#AtlasRhythm_Cryptography_Aeads_Aead_DecryptCore_System_Byte__System_Byte__System_Byte__System_Int32_System_Byte__System_Byte__System_Int32_System_Byte__">Aead.DecryptCore(Byte*, Byte*, Byte*, Int32, Byte*, Byte*, Int32, Byte*)</a></div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Atlas-Rhythm/AtlasRhythm.Cryptography.NET/new/master/apiSpec/new?filename=AtlasRhythm_Cryptography_Aeads_Chacha20Poly1305_Dispose.md&amp;value=---%0Auid%3A%20AtlasRhythm.Cryptography.Aeads.Chacha20Poly1305.Dispose%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Atlas-Rhythm/AtlasRhythm.Cryptography.NET/blob/master/AtlasRhythm.Cryptography/Aeads/Chacha20Poly1305.cs/#L152">View Source</a>
+  </span>
+  <a id="AtlasRhythm_Cryptography_Aeads_Chacha20Poly1305_Dispose_" data-uid="AtlasRhythm.Cryptography.Aeads.Chacha20Poly1305.Dispose*"></a>
+  <h4 id="AtlasRhythm_Cryptography_Aeads_Chacha20Poly1305_Dispose" data-uid="AtlasRhythm.Cryptography.Aeads.Chacha20Poly1305.Dispose">Dispose()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Dispose()</code></pre>
+  </div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Atlas-Rhythm/AtlasRhythm.Cryptography.NET/new/master/apiSpec/new?filename=AtlasRhythm_Cryptography_Aeads_Chacha20Poly1305_EncryptCore_System_Byte__System_Byte__System_Byte__System_Int32_System_Byte__System_Int32_System_Byte__System_Byte__.md&amp;value=---%0Auid%3A%20AtlasRhythm.Cryptography.Aeads.Chacha20Poly1305.EncryptCore(System.Byte*%2CSystem.Byte*%2CSystem.Byte*%2CSystem.Int32%2CSystem.Byte*%2CSystem.Int32%2CSystem.Byte*%2CSystem.Byte*)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Atlas-Rhythm/AtlasRhythm.Cryptography.NET/blob/master/AtlasRhythm.Cryptography/Aeads/Chacha20Poly1305.cs/#L60">View Source</a>
+  </span>
+  <a id="AtlasRhythm_Cryptography_Aeads_Chacha20Poly1305_EncryptCore_" data-uid="AtlasRhythm.Cryptography.Aeads.Chacha20Poly1305.EncryptCore*"></a>
+  <h4 id="AtlasRhythm_Cryptography_Aeads_Chacha20Poly1305_EncryptCore_System_Byte__System_Byte__System_Byte__System_Int32_System_Byte__System_Int32_System_Byte__System_Byte__" data-uid="AtlasRhythm.Cryptography.Aeads.Chacha20Poly1305.EncryptCore(System.Byte*,System.Byte*,System.Byte*,System.Int32,System.Byte*,System.Int32,System.Byte*,System.Byte*)">EncryptCore(Byte*, Byte*, Byte*, Int32, Byte*, Int32, Byte*, Byte*)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected override void EncryptCore(byte *key, byte *nonce, byte *plaintext, int size, byte *associatedData, int associatedDataSize, byte *ciphertext, byte *tag)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.byte">Byte</a>*</td>
+        <td><span class="parametername">key</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.byte">Byte</a>*</td>
+        <td><span class="parametername">nonce</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.byte">Byte</a>*</td>
+        <td><span class="parametername">plaintext</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.int32">Int32</a></td>
+        <td><span class="parametername">size</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.byte">Byte</a>*</td>
+        <td><span class="parametername">associatedData</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.int32">Int32</a></td>
+        <td><span class="parametername">associatedDataSize</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.byte">Byte</a>*</td>
+        <td><span class="parametername">ciphertext</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.byte">Byte</a>*</td>
+        <td><span class="parametername">tag</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><a class="xref" href="AtlasRhythm.Cryptography.Aeads.Aead.html#AtlasRhythm_Cryptography_Aeads_Aead_EncryptCore_System_Byte__System_Byte__System_Byte__System_Int32_System_Byte__System_Int32_System_Byte__System_Byte__">Aead.EncryptCore(Byte*, Byte*, Byte*, Int32, Byte*, Int32, Byte*, Byte*)</a></div>
+  <h3 id="implements">Implements</h3>
+  <div>
+      <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.idisposable">System.IDisposable</a>
+  </div>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/Atlas-Rhythm/AtlasRhythm.Cryptography.NET/new/master/apiSpec/new?filename=AtlasRhythm_Cryptography_Aeads_Chacha20Poly1305.md&amp;value=---%0Auid%3A%20AtlasRhythm.Cryptography.Aeads.Chacha20Poly1305%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                  </li>
+                  <li>
+                    <a href="https://github.com/Atlas-Rhythm/AtlasRhythm.Cryptography.NET/blob/master/AtlasRhythm.Cryptography/Aeads/Chacha20Poly1305.cs/#L25" class="contribution-link">View Source</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

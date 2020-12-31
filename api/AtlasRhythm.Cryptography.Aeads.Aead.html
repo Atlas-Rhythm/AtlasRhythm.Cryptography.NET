@@ -1,0 +1,1131 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Class Aead
+   </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Class Aead
+   ">
+    <meta name="generator" content="docfx 2.56.6.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="AtlasRhythm.Cryptography.Aeads.Aead">
+  
+  
+  <h1 id="AtlasRhythm_Cryptography_Aeads_Aead" data-uid="AtlasRhythm.Cryptography.Aeads.Aead" class="text-break">Class Aead
+  </h1>
+  <div class="markdown level0 summary"><p>Represents the abstract class from which all implementations of Authenticated Encryption with Associated Data (AEAD) must derive.</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.object">Object</a></div>
+    <div class="level1"><span class="xref">Aead</span></div>
+      <div class="level2"><a class="xref" href="AtlasRhythm.Cryptography.Aeads.Chacha20Poly1305.html">Chacha20Poly1305</a></div>
+  </div>
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.object.equals#System_Object_Equals_System_Object_">Object.Equals(Object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.object.equals#System_Object_Equals_System_Object_System_Object_">Object.Equals(Object, Object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.object.gethashcode#System_Object_GetHashCode">Object.GetHashCode()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.object.gettype#System_Object_GetType">Object.GetType()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.object.memberwiseclone#System_Object_MemberwiseClone">Object.MemberwiseClone()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.object.referenceequals#System_Object_ReferenceEquals_System_Object_System_Object_">Object.ReferenceEquals(Object, Object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.object.tostring#System_Object_ToString">Object.ToString()</a>
+    </div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="AtlasRhythm.Cryptography.Aeads.html">AtlasRhythm.Cryptography.Aeads</a></h6>
+  <h6><strong>Assembly</strong>: AtlasRhythm.Cryptography.dll</h6>
+  <h5 id="AtlasRhythm_Cryptography_Aeads_Aead_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public abstract class Aead</code></pre>
+  </div>
+  <h3 id="properties">Properties
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Atlas-Rhythm/AtlasRhythm.Cryptography.NET/new/master/apiSpec/new?filename=AtlasRhythm_Cryptography_Aeads_Aead_Key.md&amp;value=---%0Auid%3A%20AtlasRhythm.Cryptography.Aeads.Aead.Key%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Atlas-Rhythm/AtlasRhythm.Cryptography.NET/blob/master/AtlasRhythm.Cryptography/Aeads/Aead.cs/#L24">View Source</a>
+  </span>
+  <a id="AtlasRhythm_Cryptography_Aeads_Aead_Key_" data-uid="AtlasRhythm.Cryptography.Aeads.Aead.Key*"></a>
+  <h4 id="AtlasRhythm_Cryptography_Aeads_Aead_Key" data-uid="AtlasRhythm.Cryptography.Aeads.Aead.Key">Key</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected abstract byte[] Key { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.byte">Byte</a>[]</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Atlas-Rhythm/AtlasRhythm.Cryptography.NET/new/master/apiSpec/new?filename=AtlasRhythm_Cryptography_Aeads_Aead_KeyByteSizes.md&amp;value=---%0Auid%3A%20AtlasRhythm.Cryptography.Aeads.Aead.KeyByteSizes%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Atlas-Rhythm/AtlasRhythm.Cryptography.NET/blob/master/AtlasRhythm.Cryptography/Aeads/Aead.cs/#L14">View Source</a>
+  </span>
+  <a id="AtlasRhythm_Cryptography_Aeads_Aead_KeyByteSizes_" data-uid="AtlasRhythm.Cryptography.Aeads.Aead.KeyByteSizes*"></a>
+  <h4 id="AtlasRhythm_Cryptography_Aeads_Aead_KeyByteSizes" data-uid="AtlasRhythm.Cryptography.Aeads.Aead.KeyByteSizes">KeyByteSizes</h4>
+  <div class="markdown level1 summary"><p>Gets the key sizes, in bytes, supported by this instance.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public abstract KeySizes KeyByteSizes { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.security.cryptography.keysizes">KeySizes</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Atlas-Rhythm/AtlasRhythm.Cryptography.NET/new/master/apiSpec/new?filename=AtlasRhythm_Cryptography_Aeads_Aead_NonceByteSizes.md&amp;value=---%0Auid%3A%20AtlasRhythm.Cryptography.Aeads.Aead.NonceByteSizes%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Atlas-Rhythm/AtlasRhythm.Cryptography.NET/blob/master/AtlasRhythm.Cryptography/Aeads/Aead.cs/#L18">View Source</a>
+  </span>
+  <a id="AtlasRhythm_Cryptography_Aeads_Aead_NonceByteSizes_" data-uid="AtlasRhythm.Cryptography.Aeads.Aead.NonceByteSizes*"></a>
+  <h4 id="AtlasRhythm_Cryptography_Aeads_Aead_NonceByteSizes" data-uid="AtlasRhythm.Cryptography.Aeads.Aead.NonceByteSizes">NonceByteSizes</h4>
+  <div class="markdown level1 summary"><p>Gets the nonce sizes, in bytes, supported by this instance.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public abstract KeySizes NonceByteSizes { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.security.cryptography.keysizes">KeySizes</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Atlas-Rhythm/AtlasRhythm.Cryptography.NET/new/master/apiSpec/new?filename=AtlasRhythm_Cryptography_Aeads_Aead_TagByteSizes.md&amp;value=---%0Auid%3A%20AtlasRhythm.Cryptography.Aeads.Aead.TagByteSizes%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Atlas-Rhythm/AtlasRhythm.Cryptography.NET/blob/master/AtlasRhythm.Cryptography/Aeads/Aead.cs/#L22">View Source</a>
+  </span>
+  <a id="AtlasRhythm_Cryptography_Aeads_Aead_TagByteSizes_" data-uid="AtlasRhythm.Cryptography.Aeads.Aead.TagByteSizes*"></a>
+  <h4 id="AtlasRhythm_Cryptography_Aeads_Aead_TagByteSizes" data-uid="AtlasRhythm.Cryptography.Aeads.Aead.TagByteSizes">TagByteSizes</h4>
+  <div class="markdown level1 summary"><p>Gets the tag sizes, in bytes, supported by this instance.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public abstract KeySizes TagByteSizes { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.security.cryptography.keysizes">KeySizes</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="methods">Methods
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Atlas-Rhythm/AtlasRhythm.Cryptography.NET/new/master/apiSpec/new?filename=AtlasRhythm_Cryptography_Aeads_Aead_Decrypt_System_Byte___System_Byte___System_Byte___.md&amp;value=---%0Auid%3A%20AtlasRhythm.Cryptography.Aeads.Aead.Decrypt(System.Byte%5B%5D%2CSystem.Byte%5B%5D%2CSystem.Byte%5B%5D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Atlas-Rhythm/AtlasRhythm.Cryptography.NET/blob/master/AtlasRhythm.Cryptography/Aeads/Aead.cs/#L152">View Source</a>
+  </span>
+  <a id="AtlasRhythm_Cryptography_Aeads_Aead_Decrypt_" data-uid="AtlasRhythm.Cryptography.Aeads.Aead.Decrypt*"></a>
+  <h4 id="AtlasRhythm_Cryptography_Aeads_Aead_Decrypt_System_Byte___System_Byte___System_Byte___" data-uid="AtlasRhythm.Cryptography.Aeads.Aead.Decrypt(System.Byte[],System.Byte[],System.Byte[])">Decrypt(Byte[], Byte[], Byte[])</h4>
+  <div class="markdown level1 summary"><p>Decrypts the ciphertext and returns the plaintext in a new buffer if the authentication tag can be validated.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public byte[] Decrypt(byte[] nonce, byte[] ciphertextAndTag, byte[] associatedData = null)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.byte">Byte</a>[]</td>
+        <td><span class="parametername">nonce</span></td>
+        <td><p>The nonce associated with this message, which must match the value provided during encryption.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.byte">Byte</a>[]</td>
+        <td><span class="parametername">ciphertextAndTag</span></td>
+        <td><p>The byte array containing the concatenated ciphertext and authentication tag.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.byte">Byte</a>[]</td>
+        <td><span class="parametername">associatedData</span></td>
+        <td><p>Extra data associated with this message, which must match the value provided during encryption.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.byte">Byte</a>[]</td>
+        <td><p>The byte array containing the plaintext.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.argumentnullexception">ArgumentNullException</a></td>
+        <td><p>The <code>nonce</code> or <code>ciphertextAndTag</code> parameter is <code>null</code>.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.argumentexception">ArgumentException</a></td>
+        <td><p>The <code>nonce</code> parameter length is not permitted by <a class="xref" href="AtlasRhythm.Cryptography.Aeads.Aead.html#AtlasRhythm_Cryptography_Aeads_Aead_NonceByteSizes">NonceByteSizes</a>.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.argumentexception">ArgumentException</a></td>
+        <td><p>The <code>ciphertextAndTag</code> parameter length is shorter than the tag length.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.security.cryptography.cryptographicexception">CryptographicException</a></td>
+        <td><p>The tag value could not be verified.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Atlas-Rhythm/AtlasRhythm.Cryptography.NET/new/master/apiSpec/new?filename=AtlasRhythm_Cryptography_Aeads_Aead_Decrypt_System_Byte___System_Byte___System_Byte___System_Byte___System_Byte___.md&amp;value=---%0Auid%3A%20AtlasRhythm.Cryptography.Aeads.Aead.Decrypt(System.Byte%5B%5D%2CSystem.Byte%5B%5D%2CSystem.Byte%5B%5D%2CSystem.Byte%5B%5D%2CSystem.Byte%5B%5D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Atlas-Rhythm/AtlasRhythm.Cryptography.NET/blob/master/AtlasRhythm.Cryptography/Aeads/Aead.cs/#L80">View Source</a>
+  </span>
+  <a id="AtlasRhythm_Cryptography_Aeads_Aead_Decrypt_" data-uid="AtlasRhythm.Cryptography.Aeads.Aead.Decrypt*"></a>
+  <h4 id="AtlasRhythm_Cryptography_Aeads_Aead_Decrypt_System_Byte___System_Byte___System_Byte___System_Byte___System_Byte___" data-uid="AtlasRhythm.Cryptography.Aeads.Aead.Decrypt(System.Byte[],System.Byte[],System.Byte[],System.Byte[],System.Byte[])">Decrypt(Byte[], Byte[], Byte[], Byte[], Byte[])</h4>
+  <div class="markdown level1 summary"><p>Decrypts the ciphertext into the provided destination buffer if the authentication tag can be validated.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Decrypt(byte[] nonce, byte[] ciphertext, byte[] tag, byte[] plaintext, byte[] associatedData = null)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.byte">Byte</a>[]</td>
+        <td><span class="parametername">nonce</span></td>
+        <td><p>The nonce associated with this message, which must match the value provided during encryption.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.byte">Byte</a>[]</td>
+        <td><span class="parametername">ciphertext</span></td>
+        <td><p>The encrypted content to decrypt.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.byte">Byte</a>[]</td>
+        <td><span class="parametername">tag</span></td>
+        <td><p>The authentication tag produced for this message during encryption.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.byte">Byte</a>[]</td>
+        <td><span class="parametername">plaintext</span></td>
+        <td><p>The byte array to receive the decrypted contents.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.byte">Byte</a>[]</td>
+        <td><span class="parametername">associatedData</span></td>
+        <td><p>Extra data associated with this message, which must match the value provided during encryption.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.argumentnullexception">ArgumentNullException</a></td>
+        <td><p>The <code>nonce</code>, <code>ciphertext</code>, <code>tag</code>, or <code>plaintext</code> parameter is <code>null</code>.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.argumentexception">ArgumentException</a></td>
+        <td><p>The <code>nonce</code> parameter length is not permitted by <a class="xref" href="AtlasRhythm.Cryptography.Aeads.Aead.html#AtlasRhythm_Cryptography_Aeads_Aead_NonceByteSizes">NonceByteSizes</a>.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.argumentexception">ArgumentException</a></td>
+        <td><p>The <code>tag</code> parameter length is not permitted by <a class="xref" href="AtlasRhythm.Cryptography.Aeads.Aead.html#AtlasRhythm_Cryptography_Aeads_Aead_TagByteSizes">TagByteSizes</a>.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.argumentexception">ArgumentException</a></td>
+        <td><p>The <code>ciphertext</code> parameter and the <code>plaintext</code> do not have the same length.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.security.cryptography.cryptographicexception">CryptographicException</a></td>
+        <td><p>The tag value could not be verified.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Atlas-Rhythm/AtlasRhythm.Cryptography.NET/new/master/apiSpec/new?filename=AtlasRhythm_Cryptography_Aeads_Aead_Decrypt_System_ReadOnlySpan_System_Byte__System_ReadOnlySpan_System_Byte__System_ReadOnlySpan_System_Byte__.md&amp;value=---%0Auid%3A%20AtlasRhythm.Cryptography.Aeads.Aead.Decrypt(System.ReadOnlySpan%7BSystem.Byte%7D%2CSystem.ReadOnlySpan%7BSystem.Byte%7D%2CSystem.ReadOnlySpan%7BSystem.Byte%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Atlas-Rhythm/AtlasRhythm.Cryptography.NET/blob/master/AtlasRhythm.Cryptography/Aeads/Aead.cs/#L287">View Source</a>
+  </span>
+  <a id="AtlasRhythm_Cryptography_Aeads_Aead_Decrypt_" data-uid="AtlasRhythm.Cryptography.Aeads.Aead.Decrypt*"></a>
+  <h4 id="AtlasRhythm_Cryptography_Aeads_Aead_Decrypt_System_ReadOnlySpan_System_Byte__System_ReadOnlySpan_System_Byte__System_ReadOnlySpan_System_Byte__" data-uid="AtlasRhythm.Cryptography.Aeads.Aead.Decrypt(System.ReadOnlySpan{System.Byte},System.ReadOnlySpan{System.Byte},System.ReadOnlySpan{System.Byte})">Decrypt(ReadOnlySpan&lt;Byte&gt;, ReadOnlySpan&lt;Byte&gt;, ReadOnlySpan&lt;Byte&gt;)</h4>
+  <div class="markdown level1 summary"><p>Decrypts the ciphertext and returns the plaintext in a new buffer if the authentication tag can be validated.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public byte[] Decrypt(ReadOnlySpan&lt;byte&gt; nonce, ReadOnlySpan&lt;byte&gt; ciphertextAndTag, ReadOnlySpan&lt;byte&gt; associatedData = default(ReadOnlySpan&lt;byte&gt;))</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.readonlyspan-1">ReadOnlySpan</a>&lt;<a class="xref" href="https://docs.microsoft.com/dotnet/api/system.byte">Byte</a>&gt;</td>
+        <td><span class="parametername">nonce</span></td>
+        <td><p>The nonce associated with this message, which must match the value provided during encryption.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.readonlyspan-1">ReadOnlySpan</a>&lt;<a class="xref" href="https://docs.microsoft.com/dotnet/api/system.byte">Byte</a>&gt;</td>
+        <td><span class="parametername">ciphertextAndTag</span></td>
+        <td><p>The byte span containing the concatenated ciphertext and authentication tag.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.readonlyspan-1">ReadOnlySpan</a>&lt;<a class="xref" href="https://docs.microsoft.com/dotnet/api/system.byte">Byte</a>&gt;</td>
+        <td><span class="parametername">associatedData</span></td>
+        <td><p>Extra data associated with this message, which must match the value provided during encryption.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.byte">Byte</a>[]</td>
+        <td><p>The byte array containing the plaintext.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.argumentexception">ArgumentException</a></td>
+        <td><p>The <code>nonce</code> parameter length is not permitted by <a class="xref" href="AtlasRhythm.Cryptography.Aeads.Aead.html#AtlasRhythm_Cryptography_Aeads_Aead_NonceByteSizes">NonceByteSizes</a>.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.argumentexception">ArgumentException</a></td>
+        <td><p>The <code>ciphertextAndTag</code> parameter length is shorter than the tag length.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.security.cryptography.cryptographicexception">CryptographicException</a></td>
+        <td><p>The tag value could not be verified.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Atlas-Rhythm/AtlasRhythm.Cryptography.NET/new/master/apiSpec/new?filename=AtlasRhythm_Cryptography_Aeads_Aead_Decrypt_System_ReadOnlySpan_System_Byte__System_ReadOnlySpan_System_Byte__System_ReadOnlySpan_System_Byte__System_Span_System_Byte__System_ReadOnlySpan_System_Byte__.md&amp;value=---%0Auid%3A%20AtlasRhythm.Cryptography.Aeads.Aead.Decrypt(System.ReadOnlySpan%7BSystem.Byte%7D%2CSystem.ReadOnlySpan%7BSystem.Byte%7D%2CSystem.ReadOnlySpan%7BSystem.Byte%7D%2CSystem.Span%7BSystem.Byte%7D%2CSystem.ReadOnlySpan%7BSystem.Byte%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Atlas-Rhythm/AtlasRhythm.Cryptography.NET/blob/master/AtlasRhythm.Cryptography/Aeads/Aead.cs/#L225">View Source</a>
+  </span>
+  <a id="AtlasRhythm_Cryptography_Aeads_Aead_Decrypt_" data-uid="AtlasRhythm.Cryptography.Aeads.Aead.Decrypt*"></a>
+  <h4 id="AtlasRhythm_Cryptography_Aeads_Aead_Decrypt_System_ReadOnlySpan_System_Byte__System_ReadOnlySpan_System_Byte__System_ReadOnlySpan_System_Byte__System_Span_System_Byte__System_ReadOnlySpan_System_Byte__" data-uid="AtlasRhythm.Cryptography.Aeads.Aead.Decrypt(System.ReadOnlySpan{System.Byte},System.ReadOnlySpan{System.Byte},System.ReadOnlySpan{System.Byte},System.Span{System.Byte},System.ReadOnlySpan{System.Byte})">Decrypt(ReadOnlySpan&lt;Byte&gt;, ReadOnlySpan&lt;Byte&gt;, ReadOnlySpan&lt;Byte&gt;, Span&lt;Byte&gt;, ReadOnlySpan&lt;Byte&gt;)</h4>
+  <div class="markdown level1 summary"><p>Decrypts the ciphertext into the provided destination buffer if the authentication tag can be validated.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Decrypt(ReadOnlySpan&lt;byte&gt; nonce, ReadOnlySpan&lt;byte&gt; ciphertext, ReadOnlySpan&lt;byte&gt; tag, Span&lt;byte&gt; plaintext, ReadOnlySpan&lt;byte&gt; associatedData = default(ReadOnlySpan&lt;byte&gt;))</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.readonlyspan-1">ReadOnlySpan</a>&lt;<a class="xref" href="https://docs.microsoft.com/dotnet/api/system.byte">Byte</a>&gt;</td>
+        <td><span class="parametername">nonce</span></td>
+        <td><p>The nonce associated with this message, which must match the value provided during encryption.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.readonlyspan-1">ReadOnlySpan</a>&lt;<a class="xref" href="https://docs.microsoft.com/dotnet/api/system.byte">Byte</a>&gt;</td>
+        <td><span class="parametername">ciphertext</span></td>
+        <td><p>The encrypted content to decrypt.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.readonlyspan-1">ReadOnlySpan</a>&lt;<a class="xref" href="https://docs.microsoft.com/dotnet/api/system.byte">Byte</a>&gt;</td>
+        <td><span class="parametername">tag</span></td>
+        <td><p>The authentication tag produced for this message during encryption.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.span-1">Span</a>&lt;<a class="xref" href="https://docs.microsoft.com/dotnet/api/system.byte">Byte</a>&gt;</td>
+        <td><span class="parametername">plaintext</span></td>
+        <td><p>The byte span to receive the decrypted contents.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.readonlyspan-1">ReadOnlySpan</a>&lt;<a class="xref" href="https://docs.microsoft.com/dotnet/api/system.byte">Byte</a>&gt;</td>
+        <td><span class="parametername">associatedData</span></td>
+        <td><p>Extra data associated with this message, which must match the value provided during encryption.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.argumentexception">ArgumentException</a></td>
+        <td><p>The <code>nonce</code> parameter length is not permitted by <a class="xref" href="AtlasRhythm.Cryptography.Aeads.Aead.html#AtlasRhythm_Cryptography_Aeads_Aead_NonceByteSizes">NonceByteSizes</a>.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.argumentexception">ArgumentException</a></td>
+        <td><p>The <code>tag</code> parameter length is not permitted by <a class="xref" href="AtlasRhythm.Cryptography.Aeads.Aead.html#AtlasRhythm_Cryptography_Aeads_Aead_TagByteSizes">TagByteSizes</a>.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.argumentexception">ArgumentException</a></td>
+        <td><p>The <code>ciphertext</code> parameter and the <code>plaintext</code> do not have the same length.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.security.cryptography.cryptographicexception">CryptographicException</a></td>
+        <td><p>The tag value could not be verified.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Atlas-Rhythm/AtlasRhythm.Cryptography.NET/new/master/apiSpec/new?filename=AtlasRhythm_Cryptography_Aeads_Aead_DecryptCore_System_Byte__System_Byte__System_Byte__System_Int32_System_Byte__System_Byte__System_Int32_System_Byte__.md&amp;value=---%0Auid%3A%20AtlasRhythm.Cryptography.Aeads.Aead.DecryptCore(System.Byte*%2CSystem.Byte*%2CSystem.Byte*%2CSystem.Int32%2CSystem.Byte*%2CSystem.Byte*%2CSystem.Int32%2CSystem.Byte*)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Atlas-Rhythm/AtlasRhythm.Cryptography.NET/blob/master/AtlasRhythm.Cryptography/Aeads/Aead.cs/#L320">View Source</a>
+  </span>
+  <a id="AtlasRhythm_Cryptography_Aeads_Aead_DecryptCore_" data-uid="AtlasRhythm.Cryptography.Aeads.Aead.DecryptCore*"></a>
+  <h4 id="AtlasRhythm_Cryptography_Aeads_Aead_DecryptCore_System_Byte__System_Byte__System_Byte__System_Int32_System_Byte__System_Byte__System_Int32_System_Byte__" data-uid="AtlasRhythm.Cryptography.Aeads.Aead.DecryptCore(System.Byte*,System.Byte*,System.Byte*,System.Int32,System.Byte*,System.Byte*,System.Int32,System.Byte*)">DecryptCore(Byte*, Byte*, Byte*, Int32, Byte*, Byte*, Int32, Byte*)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected abstract bool DecryptCore(byte *key, byte *nonce, byte *ciphertext, int size, byte *tag, byte *associatedData, int associatedDataSize, byte *plaintext)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.byte">Byte</a>*</td>
+        <td><span class="parametername">key</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.byte">Byte</a>*</td>
+        <td><span class="parametername">nonce</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.byte">Byte</a>*</td>
+        <td><span class="parametername">ciphertext</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.int32">Int32</a></td>
+        <td><span class="parametername">size</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.byte">Byte</a>*</td>
+        <td><span class="parametername">tag</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.byte">Byte</a>*</td>
+        <td><span class="parametername">associatedData</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.int32">Int32</a></td>
+        <td><span class="parametername">associatedDataSize</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.byte">Byte</a>*</td>
+        <td><span class="parametername">plaintext</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.boolean">Boolean</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Atlas-Rhythm/AtlasRhythm.Cryptography.NET/new/master/apiSpec/new?filename=AtlasRhythm_Cryptography_Aeads_Aead_Encrypt_System_Byte___System_Byte___System_Byte___.md&amp;value=---%0Auid%3A%20AtlasRhythm.Cryptography.Aeads.Aead.Encrypt(System.Byte%5B%5D%2CSystem.Byte%5B%5D%2CSystem.Byte%5B%5D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Atlas-Rhythm/AtlasRhythm.Cryptography.NET/blob/master/AtlasRhythm.Cryptography/Aeads/Aead.cs/#L119">View Source</a>
+  </span>
+  <a id="AtlasRhythm_Cryptography_Aeads_Aead_Encrypt_" data-uid="AtlasRhythm.Cryptography.Aeads.Aead.Encrypt*"></a>
+  <h4 id="AtlasRhythm_Cryptography_Aeads_Aead_Encrypt_System_Byte___System_Byte___System_Byte___" data-uid="AtlasRhythm.Cryptography.Aeads.Aead.Encrypt(System.Byte[],System.Byte[],System.Byte[])">Encrypt(Byte[], Byte[], Byte[])</h4>
+  <div class="markdown level1 summary"><p>Encrypts the plaintext and returns the concatenated ciphertext and authentication tag in a new buffer.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public byte[] Encrypt(byte[] nonce, byte[] plaintext, byte[] associatedData = null)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.byte">Byte</a>[]</td>
+        <td><span class="parametername">nonce</span></td>
+        <td><p>The nonce associated with this message, which should be a unique value for every operation with the same key.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.byte">Byte</a>[]</td>
+        <td><span class="parametername">plaintext</span></td>
+        <td><p>The content to encrypt.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.byte">Byte</a>[]</td>
+        <td><span class="parametername">associatedData</span></td>
+        <td><p>Extra data associated with this message, which must also be provided during decryption.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.byte">Byte</a>[]</td>
+        <td><p>The byte array containing the concatenated ciphertext and authentication tag.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.argumentnullexception">ArgumentNullException</a></td>
+        <td><p>The <code>nonce</code> or <code>plaintext</code> parameter is <code>null</code>.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.argumentexception">ArgumentException</a></td>
+        <td><p>The <code>nonce</code> parameter length is not permitted by <a class="xref" href="AtlasRhythm.Cryptography.Aeads.Aead.html#AtlasRhythm_Cryptography_Aeads_Aead_NonceByteSizes">NonceByteSizes</a>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Atlas-Rhythm/AtlasRhythm.Cryptography.NET/new/master/apiSpec/new?filename=AtlasRhythm_Cryptography_Aeads_Aead_Encrypt_System_Byte___System_Byte___System_Byte___System_Byte___System_Byte___.md&amp;value=---%0Auid%3A%20AtlasRhythm.Cryptography.Aeads.Aead.Encrypt(System.Byte%5B%5D%2CSystem.Byte%5B%5D%2CSystem.Byte%5B%5D%2CSystem.Byte%5B%5D%2CSystem.Byte%5B%5D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Atlas-Rhythm/AtlasRhythm.Cryptography.NET/blob/master/AtlasRhythm.Cryptography/Aeads/Aead.cs/#L38">View Source</a>
+  </span>
+  <a id="AtlasRhythm_Cryptography_Aeads_Aead_Encrypt_" data-uid="AtlasRhythm.Cryptography.Aeads.Aead.Encrypt*"></a>
+  <h4 id="AtlasRhythm_Cryptography_Aeads_Aead_Encrypt_System_Byte___System_Byte___System_Byte___System_Byte___System_Byte___" data-uid="AtlasRhythm.Cryptography.Aeads.Aead.Encrypt(System.Byte[],System.Byte[],System.Byte[],System.Byte[],System.Byte[])">Encrypt(Byte[], Byte[], Byte[], Byte[], Byte[])</h4>
+  <div class="markdown level1 summary"><p>Encrypts the plaintext into the ciphertext destination buffer and generates the authentication tag into a separate buffer.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Encrypt(byte[] nonce, byte[] plaintext, byte[] ciphertext, byte[] tag, byte[] associatedData = null)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.byte">Byte</a>[]</td>
+        <td><span class="parametername">nonce</span></td>
+        <td><p>The nonce associated with this message, which should be a unique value for every operation with the same key.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.byte">Byte</a>[]</td>
+        <td><span class="parametername">plaintext</span></td>
+        <td><p>The content to encrypt.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.byte">Byte</a>[]</td>
+        <td><span class="parametername">ciphertext</span></td>
+        <td><p>The byte array to receive the encrypted contents.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.byte">Byte</a>[]</td>
+        <td><span class="parametername">tag</span></td>
+        <td><p>The byte array to receive the generated authentication tag.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.byte">Byte</a>[]</td>
+        <td><span class="parametername">associatedData</span></td>
+        <td><p>Extra data associated with this message, which must also be provided during decryption.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.argumentnullexception">ArgumentNullException</a></td>
+        <td><p>The <code>nonce</code>, <code>plaintext</code>, <code>ciphtertext</code>, or <code>tag</code> parameter is <code>null</code>.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.argumentexception">ArgumentException</a></td>
+        <td><p>The <code>nonce</code> parameter length is not permitted by <a class="xref" href="AtlasRhythm.Cryptography.Aeads.Aead.html#AtlasRhythm_Cryptography_Aeads_Aead_NonceByteSizes">NonceByteSizes</a>.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.argumentexception">ArgumentException</a></td>
+        <td><p>The <code>tag</code> parameter length is not permitted by <a class="xref" href="AtlasRhythm.Cryptography.Aeads.Aead.html#AtlasRhythm_Cryptography_Aeads_Aead_TagByteSizes">TagByteSizes</a>.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.argumentexception">ArgumentException</a></td>
+        <td><p>The <code>plaintext</code> parameter and the <code>ciphertext</code> do not have the same length.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Atlas-Rhythm/AtlasRhythm.Cryptography.NET/new/master/apiSpec/new?filename=AtlasRhythm_Cryptography_Aeads_Aead_Encrypt_System_ReadOnlySpan_System_Byte__System_ReadOnlySpan_System_Byte__System_ReadOnlySpan_System_Byte__.md&amp;value=---%0Auid%3A%20AtlasRhythm.Cryptography.Aeads.Aead.Encrypt(System.ReadOnlySpan%7BSystem.Byte%7D%2CSystem.ReadOnlySpan%7BSystem.Byte%7D%2CSystem.ReadOnlySpan%7BSystem.Byte%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Atlas-Rhythm/AtlasRhythm.Cryptography.NET/blob/master/AtlasRhythm.Cryptography/Aeads/Aead.cs/#L258">View Source</a>
+  </span>
+  <a id="AtlasRhythm_Cryptography_Aeads_Aead_Encrypt_" data-uid="AtlasRhythm.Cryptography.Aeads.Aead.Encrypt*"></a>
+  <h4 id="AtlasRhythm_Cryptography_Aeads_Aead_Encrypt_System_ReadOnlySpan_System_Byte__System_ReadOnlySpan_System_Byte__System_ReadOnlySpan_System_Byte__" data-uid="AtlasRhythm.Cryptography.Aeads.Aead.Encrypt(System.ReadOnlySpan{System.Byte},System.ReadOnlySpan{System.Byte},System.ReadOnlySpan{System.Byte})">Encrypt(ReadOnlySpan&lt;Byte&gt;, ReadOnlySpan&lt;Byte&gt;, ReadOnlySpan&lt;Byte&gt;)</h4>
+  <div class="markdown level1 summary"><p>Encrypts the plaintext and returns the concatenated ciphertext and authentication tag in a new buffer.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public byte[] Encrypt(ReadOnlySpan&lt;byte&gt; nonce, ReadOnlySpan&lt;byte&gt; plaintext, ReadOnlySpan&lt;byte&gt; associatedData = default(ReadOnlySpan&lt;byte&gt;))</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.readonlyspan-1">ReadOnlySpan</a>&lt;<a class="xref" href="https://docs.microsoft.com/dotnet/api/system.byte">Byte</a>&gt;</td>
+        <td><span class="parametername">nonce</span></td>
+        <td><p>The nonce associated with this message, which should be a unique value for every operation with the same key.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.readonlyspan-1">ReadOnlySpan</a>&lt;<a class="xref" href="https://docs.microsoft.com/dotnet/api/system.byte">Byte</a>&gt;</td>
+        <td><span class="parametername">plaintext</span></td>
+        <td><p>The content to encrypt.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.readonlyspan-1">ReadOnlySpan</a>&lt;<a class="xref" href="https://docs.microsoft.com/dotnet/api/system.byte">Byte</a>&gt;</td>
+        <td><span class="parametername">associatedData</span></td>
+        <td><p>Extra data associated with this message, which must also be provided during decryption.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.byte">Byte</a>[]</td>
+        <td><p>The byte array containing the concatenated ciphertext and authentication tag.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.argumentexception">ArgumentException</a></td>
+        <td><p>The <code>nonce</code> parameter length is not permitted by <a class="xref" href="AtlasRhythm.Cryptography.Aeads.Aead.html#AtlasRhythm_Cryptography_Aeads_Aead_NonceByteSizes">NonceByteSizes</a>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Atlas-Rhythm/AtlasRhythm.Cryptography.NET/new/master/apiSpec/new?filename=AtlasRhythm_Cryptography_Aeads_Aead_Encrypt_System_ReadOnlySpan_System_Byte__System_ReadOnlySpan_System_Byte__System_Span_System_Byte__System_Span_System_Byte__System_ReadOnlySpan_System_Byte__.md&amp;value=---%0Auid%3A%20AtlasRhythm.Cryptography.Aeads.Aead.Encrypt(System.ReadOnlySpan%7BSystem.Byte%7D%2CSystem.ReadOnlySpan%7BSystem.Byte%7D%2CSystem.Span%7BSystem.Byte%7D%2CSystem.Span%7BSystem.Byte%7D%2CSystem.ReadOnlySpan%7BSystem.Byte%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Atlas-Rhythm/AtlasRhythm.Cryptography.NET/blob/master/AtlasRhythm.Cryptography/Aeads/Aead.cs/#L189">View Source</a>
+  </span>
+  <a id="AtlasRhythm_Cryptography_Aeads_Aead_Encrypt_" data-uid="AtlasRhythm.Cryptography.Aeads.Aead.Encrypt*"></a>
+  <h4 id="AtlasRhythm_Cryptography_Aeads_Aead_Encrypt_System_ReadOnlySpan_System_Byte__System_ReadOnlySpan_System_Byte__System_Span_System_Byte__System_Span_System_Byte__System_ReadOnlySpan_System_Byte__" data-uid="AtlasRhythm.Cryptography.Aeads.Aead.Encrypt(System.ReadOnlySpan{System.Byte},System.ReadOnlySpan{System.Byte},System.Span{System.Byte},System.Span{System.Byte},System.ReadOnlySpan{System.Byte})">Encrypt(ReadOnlySpan&lt;Byte&gt;, ReadOnlySpan&lt;Byte&gt;, Span&lt;Byte&gt;, Span&lt;Byte&gt;, ReadOnlySpan&lt;Byte&gt;)</h4>
+  <div class="markdown level1 summary"><p>Encrypts the plaintext into the ciphertext destination buffer and generates the authentication tag into a separate buffer.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Encrypt(ReadOnlySpan&lt;byte&gt; nonce, ReadOnlySpan&lt;byte&gt; plaintext, Span&lt;byte&gt; ciphertext, Span&lt;byte&gt; tag, ReadOnlySpan&lt;byte&gt; associatedData = default(ReadOnlySpan&lt;byte&gt;))</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.readonlyspan-1">ReadOnlySpan</a>&lt;<a class="xref" href="https://docs.microsoft.com/dotnet/api/system.byte">Byte</a>&gt;</td>
+        <td><span class="parametername">nonce</span></td>
+        <td><p>The nonce associated with this message, which should be a unique value for every operation with the same key.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.readonlyspan-1">ReadOnlySpan</a>&lt;<a class="xref" href="https://docs.microsoft.com/dotnet/api/system.byte">Byte</a>&gt;</td>
+        <td><span class="parametername">plaintext</span></td>
+        <td><p>The content to encrypt.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.span-1">Span</a>&lt;<a class="xref" href="https://docs.microsoft.com/dotnet/api/system.byte">Byte</a>&gt;</td>
+        <td><span class="parametername">ciphertext</span></td>
+        <td><p>The byte span to receive the encrypted contents.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.span-1">Span</a>&lt;<a class="xref" href="https://docs.microsoft.com/dotnet/api/system.byte">Byte</a>&gt;</td>
+        <td><span class="parametername">tag</span></td>
+        <td><p>The byte span to receive the generated authentication tag.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.readonlyspan-1">ReadOnlySpan</a>&lt;<a class="xref" href="https://docs.microsoft.com/dotnet/api/system.byte">Byte</a>&gt;</td>
+        <td><span class="parametername">associatedData</span></td>
+        <td><p>Extra data associated with this message, which must also be provided during decryption.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.argumentexception">ArgumentException</a></td>
+        <td><p>The <code>nonce</code> parameter length is not permitted by <a class="xref" href="AtlasRhythm.Cryptography.Aeads.Aead.html#AtlasRhythm_Cryptography_Aeads_Aead_NonceByteSizes">NonceByteSizes</a>.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.argumentexception">ArgumentException</a></td>
+        <td><p>The <code>tag</code> parameter length is not permitted by <a class="xref" href="AtlasRhythm.Cryptography.Aeads.Aead.html#AtlasRhythm_Cryptography_Aeads_Aead_TagByteSizes">TagByteSizes</a>.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.argumentexception">ArgumentException</a></td>
+        <td><p>The <code>plaintext</code> parameter and the <code>ciphertext</code> do not have the same length.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Atlas-Rhythm/AtlasRhythm.Cryptography.NET/new/master/apiSpec/new?filename=AtlasRhythm_Cryptography_Aeads_Aead_EncryptCore_System_Byte__System_Byte__System_Byte__System_Int32_System_Byte__System_Int32_System_Byte__System_Byte__.md&amp;value=---%0Auid%3A%20AtlasRhythm.Cryptography.Aeads.Aead.EncryptCore(System.Byte*%2CSystem.Byte*%2CSystem.Byte*%2CSystem.Int32%2CSystem.Byte*%2CSystem.Int32%2CSystem.Byte*%2CSystem.Byte*)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Atlas-Rhythm/AtlasRhythm.Cryptography.NET/blob/master/AtlasRhythm.Cryptography/Aeads/Aead.cs/#L310">View Source</a>
+  </span>
+  <a id="AtlasRhythm_Cryptography_Aeads_Aead_EncryptCore_" data-uid="AtlasRhythm.Cryptography.Aeads.Aead.EncryptCore*"></a>
+  <h4 id="AtlasRhythm_Cryptography_Aeads_Aead_EncryptCore_System_Byte__System_Byte__System_Byte__System_Int32_System_Byte__System_Int32_System_Byte__System_Byte__" data-uid="AtlasRhythm.Cryptography.Aeads.Aead.EncryptCore(System.Byte*,System.Byte*,System.Byte*,System.Int32,System.Byte*,System.Int32,System.Byte*,System.Byte*)">EncryptCore(Byte*, Byte*, Byte*, Int32, Byte*, Int32, Byte*, Byte*)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected abstract void EncryptCore(byte *key, byte *nonce, byte *plaintext, int size, byte *associatedData, int associatedDataSize, byte *ciphertext, byte *tag)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.byte">Byte</a>*</td>
+        <td><span class="parametername">key</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.byte">Byte</a>*</td>
+        <td><span class="parametername">nonce</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.byte">Byte</a>*</td>
+        <td><span class="parametername">plaintext</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.int32">Int32</a></td>
+        <td><span class="parametername">size</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.byte">Byte</a>*</td>
+        <td><span class="parametername">associatedData</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.int32">Int32</a></td>
+        <td><span class="parametername">associatedDataSize</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.byte">Byte</a>*</td>
+        <td><span class="parametername">ciphertext</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.byte">Byte</a>*</td>
+        <td><span class="parametername">tag</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/Atlas-Rhythm/AtlasRhythm.Cryptography.NET/new/master/apiSpec/new?filename=AtlasRhythm_Cryptography_Aeads_Aead.md&amp;value=---%0Auid%3A%20AtlasRhythm.Cryptography.Aeads.Aead%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                  </li>
+                  <li>
+                    <a href="https://github.com/Atlas-Rhythm/AtlasRhythm.Cryptography.NET/blob/master/AtlasRhythm.Cryptography/Aeads/Aead.cs/#L9" class="contribution-link">View Source</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>
