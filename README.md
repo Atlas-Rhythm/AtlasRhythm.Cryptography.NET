@@ -4,7 +4,7 @@ Pure C#, portable and performant cryptography primitives.
 
 **No security audits of this code have ever been performed. USE AT YOUR OWN RISK.**
 
-[![Tests Status](https://img.shields.io/github/workflow/status/Atlas-Rhythm/AtlasRhythm.Cryptography.NET/Tests?label=tests&style=for-the-badge)](https://github.com/Atlas-Rhythm/AtlasRhythm.Cryptography.NET/actions?query=workflow%3ATests) [![Docs](https://img.shields.io/badge/docs-master-informational?style=for-the-badge)](https://atlas-rhythm.github.io/AtlasRhythm.Cryptography.NET)
+[![Tests Status](https://img.shields.io/github/workflow/status/Atlas-Rhythm/AtlasRhythm.Cryptography.NET/Tests?label=tests&style=for-the-badge)](https://github.com/Atlas-Rhythm/AtlasRhythm.Cryptography.NET/actions?query=workflow%3ATests) [![Docs](https://img.shields.io/badge/docs-master-informational?style=for-the-badge)](https://atlas-rhythm.github.io/AtlasRhythm.Cryptography.NET) [![NuGet](https://img.shields.io/nuget/v/AtlasRhythm.Cryptography?style=for-the-badge)](https://www.nuget.org/packages/AtlasRhythm.Cryptography/)
 
 ## Support
 

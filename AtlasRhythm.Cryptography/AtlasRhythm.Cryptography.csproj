@@ -3,6 +3,19 @@
   <PropertyGroup>
     <TargetFrameworks>net5.0;netcoreapp3.1;netcoreapp2.1;netstandard2.1;netstandard1.3;net45;net35</TargetFrameworks>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    
+    <Authors>Raphaël Thériault</Authors>
+    <Company>Atlas Rhythm</Company>
+    <Copyright>Copyright 2020 Atlas Rhythm</Copyright>
+    <Version>0.1.0</Version>
+    <Description>Pure C#, portable and performant cryptography primitives.</Description>
+    <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
+    <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+    <PackageProjectUrl>https://github.com/Atlas-Rhythm/AtlasRhythm.Cryptography.NET</PackageProjectUrl>
+    <PackageTags>cryptography</PackageTags>
+    <RepositoryUrl>https://github.com/Atlas-Rhythm/AtlasRhythm.Cryptography.NET.git</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
   </PropertyGroup>
 
 </Project>
