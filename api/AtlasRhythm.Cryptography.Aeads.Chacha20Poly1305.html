@@ -140,6 +140,51 @@
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public sealed class Chacha20Poly1305 : Aead, IDisposable</code></pre>
   </div>
+  <h5 id="AtlasRhythm_Cryptography_Aeads_Chacha20Poly1305_examples"><strong>Examples</strong></h5>
+  <p>The following example demonstrates how to encrypt and decrypt a sample string using the <a class="xref" href="AtlasRhythm.Cryptography.Aeads.Chacha20Poly1305.html">Chacha20Poly1305</a> class.</p>
+<pre><code>using AtlasRhythm.Cryptography.Aeads;
+using System.Security.Cryptography;
+using System.Text;
+
+// Create a new cryptographically secure random number generator
+var rng = new RNGCryptoServiceProvider();
+
+// Generate a random key of the appropriate length
+var key = new byte[Chacha20Poly1305.KeySize];
+rng.GetBytes(key);
+
+// Create the instance
+// Note the `using var`, this is necessary to make sure
+// the memory containing the key is zeroed after use
+using var aead = new Chacha20Poly1305(key);
+
+// Generate a random nonce of the appropriate length
+// A nonce must *never* be used twice with the same key
+var nonce = new byte[Chacha20Poly1305.NonceSize];
+rng.GetBytes(nonce);
+
+// Obtain the plaintext (content to encrypt) and associated data
+// The associated data is just used as additional authentication security
+// and is optional
+var plaintext = Encoding.UTF8.GetBytes(&quot;very secret plaintext&quot;);
+var associatedData = Encoding.UTF8.GetBytes(&quot;very secret associated data&quot;);
+
+// Encrypt the plaintext and return a buffer containing
+// the ciphertext (encrypted contents) and the authentication tag
+var output = aead.Encrypt(nonce, plaintext, associatedData);
+
+// Decrypt and authenticate the previously obtained output
+string decryptedPlaintext;
+try
+{
+    newPlaintext = Encoding.UTF8.GetString(aead.Decrypt(nonce, output, associatedData));
+}
+catch (CryptographicException ex)
+{
+    // An exception will be thrown if the authentication tag can&apos;t be verified
+    // This usually means the contents have been tampered with
+}</code></pre>
+
   <h3 id="constructors">Constructors
   </h3>
   <span class="small pull-right mobile-hide">
@@ -147,7 +192,7 @@
     <a href="https://github.com/Atlas-Rhythm/AtlasRhythm.Cryptography.NET/new/master/apiSpec/new?filename=AtlasRhythm_Cryptography_Aeads_Chacha20Poly1305__ctor_System_Byte___.md&amp;value=---%0Auid%3A%20AtlasRhythm.Cryptography.Aeads.Chacha20Poly1305.%23ctor(System.Byte%5B%5D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Atlas-Rhythm/AtlasRhythm.Cryptography.NET/blob/master/AtlasRhythm.Cryptography/Aeads/Chacha20Poly1305.cs/#L52">View Source</a>
+    <a href="https://github.com/Atlas-Rhythm/AtlasRhythm.Cryptography.NET/blob/master/AtlasRhythm.Cryptography/Aeads/Chacha20Poly1305.cs/#L99">View Source</a>
   </span>
   <a id="AtlasRhythm_Cryptography_Aeads_Chacha20Poly1305__ctor_" data-uid="AtlasRhythm.Cryptography.Aeads.Chacha20Poly1305.#ctor*"></a>
   <h4 id="AtlasRhythm_Cryptography_Aeads_Chacha20Poly1305__ctor_System_Byte___" data-uid="AtlasRhythm.Cryptography.Aeads.Chacha20Poly1305.#ctor(System.Byte[])">Chacha20Poly1305(Byte[])</h4>
@@ -204,7 +249,7 @@
     <a href="https://github.com/Atlas-Rhythm/AtlasRhythm.Cryptography.NET/new/master/apiSpec/new?filename=AtlasRhythm_Cryptography_Aeads_Chacha20Poly1305_KeySize.md&amp;value=---%0Auid%3A%20AtlasRhythm.Cryptography.Aeads.Chacha20Poly1305.KeySize%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Atlas-Rhythm/AtlasRhythm.Cryptography.NET/blob/master/AtlasRhythm.Cryptography/Aeads/Chacha20Poly1305.cs/#L30">View Source</a>
+    <a href="https://github.com/Atlas-Rhythm/AtlasRhythm.Cryptography.NET/blob/master/AtlasRhythm.Cryptography/Aeads/Chacha20Poly1305.cs/#L77">View Source</a>
   </span>
   <h4 id="AtlasRhythm_Cryptography_Aeads_Chacha20Poly1305_KeySize" data-uid="AtlasRhythm.Cryptography.Aeads.Chacha20Poly1305.KeySize">KeySize</h4>
   <div class="markdown level1 summary"><p>Key size, in bytes, supported by this instance.</p>
@@ -234,7 +279,7 @@
     <a href="https://github.com/Atlas-Rhythm/AtlasRhythm.Cryptography.NET/new/master/apiSpec/new?filename=AtlasRhythm_Cryptography_Aeads_Chacha20Poly1305_NonceSize.md&amp;value=---%0Auid%3A%20AtlasRhythm.Cryptography.Aeads.Chacha20Poly1305.NonceSize%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Atlas-Rhythm/AtlasRhythm.Cryptography.NET/blob/master/AtlasRhythm.Cryptography/Aeads/Chacha20Poly1305.cs/#L34">View Source</a>
+    <a href="https://github.com/Atlas-Rhythm/AtlasRhythm.Cryptography.NET/blob/master/AtlasRhythm.Cryptography/Aeads/Chacha20Poly1305.cs/#L81">View Source</a>
   </span>
   <h4 id="AtlasRhythm_Cryptography_Aeads_Chacha20Poly1305_NonceSize" data-uid="AtlasRhythm.Cryptography.Aeads.Chacha20Poly1305.NonceSize">NonceSize</h4>
   <div class="markdown level1 summary"><p>Nonce size, in bytes, supported by this instance.</p>
@@ -264,7 +309,7 @@
     <a href="https://github.com/Atlas-Rhythm/AtlasRhythm.Cryptography.NET/new/master/apiSpec/new?filename=AtlasRhythm_Cryptography_Aeads_Chacha20Poly1305_TagSize.md&amp;value=---%0Auid%3A%20AtlasRhythm.Cryptography.Aeads.Chacha20Poly1305.TagSize%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Atlas-Rhythm/AtlasRhythm.Cryptography.NET/blob/master/AtlasRhythm.Cryptography/Aeads/Chacha20Poly1305.cs/#L38">View Source</a>
+    <a href="https://github.com/Atlas-Rhythm/AtlasRhythm.Cryptography.NET/blob/master/AtlasRhythm.Cryptography/Aeads/Chacha20Poly1305.cs/#L85">View Source</a>
   </span>
   <h4 id="AtlasRhythm_Cryptography_Aeads_Chacha20Poly1305_TagSize" data-uid="AtlasRhythm.Cryptography.Aeads.Chacha20Poly1305.TagSize">TagSize</h4>
   <div class="markdown level1 summary"><p>Tag size, in bytes, supported by this instance.</p>
@@ -296,7 +341,7 @@
     <a href="https://github.com/Atlas-Rhythm/AtlasRhythm.Cryptography.NET/new/master/apiSpec/new?filename=AtlasRhythm_Cryptography_Aeads_Chacha20Poly1305_Key.md&amp;value=---%0Auid%3A%20AtlasRhythm.Cryptography.Aeads.Chacha20Poly1305.Key%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Atlas-Rhythm/AtlasRhythm.Cryptography.NET/blob/master/AtlasRhythm.Cryptography/Aeads/Chacha20Poly1305.cs/#L44">View Source</a>
+    <a href="https://github.com/Atlas-Rhythm/AtlasRhythm.Cryptography.NET/blob/master/AtlasRhythm.Cryptography/Aeads/Chacha20Poly1305.cs/#L91">View Source</a>
   </span>
   <a id="AtlasRhythm_Cryptography_Aeads_Chacha20Poly1305_Key_" data-uid="AtlasRhythm.Cryptography.Aeads.Chacha20Poly1305.Key*"></a>
   <h4 id="AtlasRhythm_Cryptography_Aeads_Chacha20Poly1305_Key" data-uid="AtlasRhythm.Cryptography.Aeads.Chacha20Poly1305.Key">Key</h4>
@@ -328,7 +373,7 @@
     <a href="https://github.com/Atlas-Rhythm/AtlasRhythm.Cryptography.NET/new/master/apiSpec/new?filename=AtlasRhythm_Cryptography_Aeads_Chacha20Poly1305_KeyByteSizes.md&amp;value=---%0Auid%3A%20AtlasRhythm.Cryptography.Aeads.Chacha20Poly1305.KeyByteSizes%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Atlas-Rhythm/AtlasRhythm.Cryptography.NET/blob/master/AtlasRhythm.Cryptography/Aeads/Chacha20Poly1305.cs/#L40">View Source</a>
+    <a href="https://github.com/Atlas-Rhythm/AtlasRhythm.Cryptography.NET/blob/master/AtlasRhythm.Cryptography/Aeads/Chacha20Poly1305.cs/#L87">View Source</a>
   </span>
   <a id="AtlasRhythm_Cryptography_Aeads_Chacha20Poly1305_KeyByteSizes_" data-uid="AtlasRhythm.Cryptography.Aeads.Chacha20Poly1305.KeyByteSizes*"></a>
   <h4 id="AtlasRhythm_Cryptography_Aeads_Chacha20Poly1305_KeyByteSizes" data-uid="AtlasRhythm.Cryptography.Aeads.Chacha20Poly1305.KeyByteSizes">KeyByteSizes</h4>
@@ -360,7 +405,7 @@
     <a href="https://github.com/Atlas-Rhythm/AtlasRhythm.Cryptography.NET/new/master/apiSpec/new?filename=AtlasRhythm_Cryptography_Aeads_Chacha20Poly1305_NonceByteSizes.md&amp;value=---%0Auid%3A%20AtlasRhythm.Cryptography.Aeads.Chacha20Poly1305.NonceByteSizes%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Atlas-Rhythm/AtlasRhythm.Cryptography.NET/blob/master/AtlasRhythm.Cryptography/Aeads/Chacha20Poly1305.cs/#L41">View Source</a>
+    <a href="https://github.com/Atlas-Rhythm/AtlasRhythm.Cryptography.NET/blob/master/AtlasRhythm.Cryptography/Aeads/Chacha20Poly1305.cs/#L88">View Source</a>
   </span>
   <a id="AtlasRhythm_Cryptography_Aeads_Chacha20Poly1305_NonceByteSizes_" data-uid="AtlasRhythm.Cryptography.Aeads.Chacha20Poly1305.NonceByteSizes*"></a>
   <h4 id="AtlasRhythm_Cryptography_Aeads_Chacha20Poly1305_NonceByteSizes" data-uid="AtlasRhythm.Cryptography.Aeads.Chacha20Poly1305.NonceByteSizes">NonceByteSizes</h4>
@@ -392,7 +437,7 @@
     <a href="https://github.com/Atlas-Rhythm/AtlasRhythm.Cryptography.NET/new/master/apiSpec/new?filename=AtlasRhythm_Cryptography_Aeads_Chacha20Poly1305_TagByteSizes.md&amp;value=---%0Auid%3A%20AtlasRhythm.Cryptography.Aeads.Chacha20Poly1305.TagByteSizes%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Atlas-Rhythm/AtlasRhythm.Cryptography.NET/blob/master/AtlasRhythm.Cryptography/Aeads/Chacha20Poly1305.cs/#L42">View Source</a>
+    <a href="https://github.com/Atlas-Rhythm/AtlasRhythm.Cryptography.NET/blob/master/AtlasRhythm.Cryptography/Aeads/Chacha20Poly1305.cs/#L89">View Source</a>
   </span>
   <a id="AtlasRhythm_Cryptography_Aeads_Chacha20Poly1305_TagByteSizes_" data-uid="AtlasRhythm.Cryptography.Aeads.Chacha20Poly1305.TagByteSizes*"></a>
   <h4 id="AtlasRhythm_Cryptography_Aeads_Chacha20Poly1305_TagByteSizes" data-uid="AtlasRhythm.Cryptography.Aeads.Chacha20Poly1305.TagByteSizes">TagByteSizes</h4>
@@ -426,7 +471,7 @@
     <a href="https://github.com/Atlas-Rhythm/AtlasRhythm.Cryptography.NET/new/master/apiSpec/new?filename=AtlasRhythm_Cryptography_Aeads_Chacha20Poly1305_DecryptCore_System_Byte__System_Byte__System_Byte__System_Int32_System_Byte__System_Byte__System_Int32_System_Byte__.md&amp;value=---%0Auid%3A%20AtlasRhythm.Cryptography.Aeads.Chacha20Poly1305.DecryptCore(System.Byte*%2CSystem.Byte*%2CSystem.Byte*%2CSystem.Int32%2CSystem.Byte*%2CSystem.Byte*%2CSystem.Int32%2CSystem.Byte*)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Atlas-Rhythm/AtlasRhythm.Cryptography.NET/blob/master/AtlasRhythm.Cryptography/Aeads/Chacha20Poly1305.cs/#L83">View Source</a>
+    <a href="https://github.com/Atlas-Rhythm/AtlasRhythm.Cryptography.NET/blob/master/AtlasRhythm.Cryptography/Aeads/Chacha20Poly1305.cs/#L130">View Source</a>
   </span>
   <a id="AtlasRhythm_Cryptography_Aeads_Chacha20Poly1305_DecryptCore_" data-uid="AtlasRhythm.Cryptography.Aeads.Chacha20Poly1305.DecryptCore*"></a>
   <h4 id="AtlasRhythm_Cryptography_Aeads_Chacha20Poly1305_DecryptCore_System_Byte__System_Byte__System_Byte__System_Int32_System_Byte__System_Byte__System_Int32_System_Byte__" data-uid="AtlasRhythm.Cryptography.Aeads.Chacha20Poly1305.DecryptCore(System.Byte*,System.Byte*,System.Byte*,System.Int32,System.Byte*,System.Byte*,System.Int32,System.Byte*)">DecryptCore(Byte*, Byte*, Byte*, Int32, Byte*, Byte*, Int32, Byte*)</h4>
@@ -510,7 +555,7 @@
     <a href="https://github.com/Atlas-Rhythm/AtlasRhythm.Cryptography.NET/new/master/apiSpec/new?filename=AtlasRhythm_Cryptography_Aeads_Chacha20Poly1305_Dispose.md&amp;value=---%0Auid%3A%20AtlasRhythm.Cryptography.Aeads.Chacha20Poly1305.Dispose%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Atlas-Rhythm/AtlasRhythm.Cryptography.NET/blob/master/AtlasRhythm.Cryptography/Aeads/Chacha20Poly1305.cs/#L152">View Source</a>
+    <a href="https://github.com/Atlas-Rhythm/AtlasRhythm.Cryptography.NET/blob/master/AtlasRhythm.Cryptography/Aeads/Chacha20Poly1305.cs/#L199">View Source</a>
   </span>
   <a id="AtlasRhythm_Cryptography_Aeads_Chacha20Poly1305_Dispose_" data-uid="AtlasRhythm.Cryptography.Aeads.Chacha20Poly1305.Dispose*"></a>
   <h4 id="AtlasRhythm_Cryptography_Aeads_Chacha20Poly1305_Dispose" data-uid="AtlasRhythm.Cryptography.Aeads.Chacha20Poly1305.Dispose">Dispose()</h4>
@@ -525,7 +570,7 @@
     <a href="https://github.com/Atlas-Rhythm/AtlasRhythm.Cryptography.NET/new/master/apiSpec/new?filename=AtlasRhythm_Cryptography_Aeads_Chacha20Poly1305_EncryptCore_System_Byte__System_Byte__System_Byte__System_Int32_System_Byte__System_Int32_System_Byte__System_Byte__.md&amp;value=---%0Auid%3A%20AtlasRhythm.Cryptography.Aeads.Chacha20Poly1305.EncryptCore(System.Byte*%2CSystem.Byte*%2CSystem.Byte*%2CSystem.Int32%2CSystem.Byte*%2CSystem.Int32%2CSystem.Byte*%2CSystem.Byte*)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Atlas-Rhythm/AtlasRhythm.Cryptography.NET/blob/master/AtlasRhythm.Cryptography/Aeads/Chacha20Poly1305.cs/#L60">View Source</a>
+    <a href="https://github.com/Atlas-Rhythm/AtlasRhythm.Cryptography.NET/blob/master/AtlasRhythm.Cryptography/Aeads/Chacha20Poly1305.cs/#L107">View Source</a>
   </span>
   <a id="AtlasRhythm_Cryptography_Aeads_Chacha20Poly1305_EncryptCore_" data-uid="AtlasRhythm.Cryptography.Aeads.Chacha20Poly1305.EncryptCore*"></a>
   <h4 id="AtlasRhythm_Cryptography_Aeads_Chacha20Poly1305_EncryptCore_System_Byte__System_Byte__System_Byte__System_Int32_System_Byte__System_Int32_System_Byte__System_Byte__" data-uid="AtlasRhythm.Cryptography.Aeads.Chacha20Poly1305.EncryptCore(System.Byte*,System.Byte*,System.Byte*,System.Int32,System.Byte*,System.Int32,System.Byte*,System.Byte*)">EncryptCore(Byte*, Byte*, Byte*, Int32, Byte*, Int32, Byte*, Byte*)</h4>
@@ -604,7 +649,7 @@
                     <a href="https://github.com/Atlas-Rhythm/AtlasRhythm.Cryptography.NET/new/master/apiSpec/new?filename=AtlasRhythm_Cryptography_Aeads_Chacha20Poly1305.md&amp;value=---%0Auid%3A%20AtlasRhythm.Cryptography.Aeads.Chacha20Poly1305%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
                   </li>
                   <li>
-                    <a href="https://github.com/Atlas-Rhythm/AtlasRhythm.Cryptography.NET/blob/master/AtlasRhythm.Cryptography/Aeads/Chacha20Poly1305.cs/#L25" class="contribution-link">View Source</a>
+                    <a href="https://github.com/Atlas-Rhythm/AtlasRhythm.Cryptography.NET/blob/master/AtlasRhythm.Cryptography/Aeads/Chacha20Poly1305.cs/#L72" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>
