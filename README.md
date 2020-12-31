@@ -22,6 +22,8 @@ Pure C#, portable and performant cryptography primitives.
 
 ### ChaCha20-Poly1305
 
+[![Docs](https://img.shields.io/badge/docs-master-informational?style=for-the-badge)](https://atlas-rhythm.github.io/AtlasRhythm.Cryptography.NET/api/AtlasRhythm.Cryptography.Aeads.Chacha20Poly1305.html)
+
 -   [**ChaCha20**](#chacha20)
 -   [**Poly1305**](#poly1305)
 -   [Sample benchmark results](benchmark-results.md#chacha20-poly1305)
