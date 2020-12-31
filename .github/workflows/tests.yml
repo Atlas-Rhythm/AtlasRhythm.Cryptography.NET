@@ -13,3 +13,4 @@ jobs:
                   dotnet-version: 5.0.x
 
             - run: dotnet test
+              working-directory: AtlasRhythm.Cryptography.Tests
