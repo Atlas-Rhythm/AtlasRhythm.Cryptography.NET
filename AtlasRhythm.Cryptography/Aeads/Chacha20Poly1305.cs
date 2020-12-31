@@ -60,7 +60,7 @@ namespace AtlasRhythm.Cryptography.Aeads
     /// string decryptedPlaintext;
     /// try
     /// {
-    ///     newPlaintext = Encoding.UTF8.GetString(aead.Decrypt(nonce, output, associatedData));
+    ///     decryptedPlaintext = Encoding.UTF8.GetString(aead.Decrypt(nonce, output, associatedData));
     /// }
     /// catch (CryptographicException ex)
     /// {
