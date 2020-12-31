@@ -4,7 +4,7 @@ Pure C#, portable and performant cryptography primitives.
 
 **No security audits of this code have ever been performed. USE AT YOUR OWN RISK.**
 
-[![Tests Status](https://img.shields.io/github/workflow/status/Atlas-Rhythm/Chacha20Poly1305.NET/Tests?label=tests&style=for-the-badge)](https://github.com/Atlas-Rhythm/Chacha20Poly1305.NET/actions?query=workflow%3ATests)
+[![Tests Status](https://img.shields.io/github/workflow/status/Atlas-Rhythm/Chacha20Poly1305.NET/Tests?label=tests&style=for-the-badge)](https://github.com/Atlas-Rhythm/Chacha20Poly1305.NET/actions?query=workflow%3ATests) [![Docs](https://img.shields.io/badge/docs-master-informational?style=for-the-badge)](https://atlas-rhythm.github.io/AtlasRhythm.Cryptography.NET)
 
 ## Support
 

@@ -22,6 +22,53 @@ namespace AtlasRhythm.Cryptography.Aeads
     /// <summary>
     /// Represents a key to be used with ChaCha20 and Poly1305 for Authenticated Encryption with Associated Data.
     /// </summary>
+    /// <example>
+    /// The following example demonstrates how to encrypt and decrypt a sample string using the <see cref="Chacha20Poly1305"/> class.
+    /// <code>
+    /// using AtlasRhythm.Cryptography.Aeads;
+    /// using System.Security.Cryptography;
+    /// using System.Text;
+    /// 
+    /// // Create a new cryptographically secure random number generator
+    /// var rng = new RNGCryptoServiceProvider();
+    /// 
+    /// // Generate a random key of the appropriate length
+    /// var key = new byte[Chacha20Poly1305.KeySize];
+    /// rng.GetBytes(key);
+    /// 
+    /// // Create the instance
+    /// // Note the `using var`, this is necessary to make sure
+    /// // the memory containing the key is zeroed after use
+    /// using var aead = new Chacha20Poly1305(key);
+    /// 
+    /// // Generate a random nonce of the appropriate length
+    /// // A nonce must *never* be used twice with the same key
+    /// var nonce = new byte[Chacha20Poly1305.NonceSize];
+    /// rng.GetBytes(nonce);
+    /// 
+    /// // Obtain the plaintext (content to encrypt) and associated data
+    /// // The associated data is just used as additional authentication security
+    /// // and is optional
+    /// var plaintext = Encoding.UTF8.GetBytes("very secret plaintext");
+    /// var associatedData = Encoding.UTF8.GetBytes("very secret associated data");
+    /// 
+    /// // Encrypt the plaintext and return a buffer containing
+    /// // the ciphertext (encrypted contents) and the authentication tag
+    /// var output = aead.Encrypt(nonce, plaintext, associatedData);
+    /// 
+    /// // Decrypt and authenticate the previously obtained output
+    /// string decryptedPlaintext;
+    /// try
+    /// {
+    ///     newPlaintext = Encoding.UTF8.GetString(aead.Decrypt(nonce, output, associatedData));
+    /// }
+    /// catch (CryptographicException ex)
+    /// {
+    ///     // An exception will be thrown if the authentication tag can't be verified
+    ///     // This usually means the contents have been tampered with
+    /// }
+    /// </code>
+    /// </example>
     public sealed class Chacha20Poly1305 : Aead, IDisposable
     {
         /// <summary>
